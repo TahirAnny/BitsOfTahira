@@ -1,0 +1,114 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FiArrowDownCircle } from 'react-icons/fi';
+import { personalInfo } from '../config/personalInfo';
+
+const Hero = () => {
+  const { name, tagline, description } = personalInfo;
+
+  const scrollToSection = (sectionId) => {
+    const element = document.querySelector(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <section id="home" className="section-padding min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 to-purple-50 dark:from-dark-900 dark:to-dark-800 opacity-50"></div>
+      <div className="absolute inset-0 opacity-30" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+      }}></div>
+      
+      <div className="container-custom relative z-10">
+        <div className="text-center max-w-4xl mx-auto">
+          {/* Greeting */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-primary-600 dark:text-primary-400 font-medium mb-4"
+          >
+            Hi, my name is
+          </motion.p>
+
+          {/* Name */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6"
+          >
+            {name}.
+          </motion.h1>
+
+          {/* Tagline */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-700 dark:text-gray-300 mb-8"
+          >
+            {tagline}
+          </motion.h2>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed"
+          >
+            {description}
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => scrollToSection('#contact')}
+              className="btn-primary"
+            >
+              Get In Touch
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => scrollToSection('#projects')}
+              className="btn-secondary"
+            >
+              View My Work
+            </motion.button>
+          </motion.div>
+
+        </div>
+      </div>
+
+      {/* Scroll Indicator - Moved to 5% above bottom */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+        className="absolute bottom-[5%] left-1/2 transform -translate-x-1/2"
+      >
+        <motion.button
+          onClick={() => scrollToSection('#about')}
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+        >
+          <FiArrowDownCircle size={24} />
+        </motion.button>
+      </motion.div>
+    </section>
+  );
+};
+
+export default Hero; 
