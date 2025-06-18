@@ -236,7 +236,7 @@ To enhance the skill tree component:
 
 If you need help with the skill tree component, feel free to reach out:
 - Email: tahirabishwas@gmail.com
-- GitHub: [Your GitHub Profile]
+- GitHub: [Tahira](https://github.com/TahirAnny)
 
 ---
 
