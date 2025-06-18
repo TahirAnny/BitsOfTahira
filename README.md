@@ -1,5 +1,7 @@
 # Tahira's Portfolio
 
+![CI](https://github.com/TahirAnny/BitsOfTahira/actions/workflows/ci.yml/badge.svg)
+
 A modern, responsive portfolio website built with React, Node.js, and TailwindCSS, design with smooth animations, dark mode support, and a contact form with email functionality.
 
 ## 🚀 Features
@@ -191,3 +193,8 @@ If you have any questions or need help, feel free to reach out:
 ---
 
 Made with ❤️ and lots of coffee ☕ 
+
+## 🚦 Continuous Integration
+
+This project uses [GitHub Actions](https://github.com/features/actions) for continuous integration (CI).
+Every push and pull request automatically triggers a workflow that installs dependencies and builds the project to ensure everything works as expected. 
