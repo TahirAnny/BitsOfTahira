@@ -16,7 +16,7 @@ const Hero = () => {
   return (
     <section id="home" className="section-padding min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 to-purple-50 dark:from-dark-900 dark:to-dark-800 opacity-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-bg to-surface dark:from-bg-dark dark:to-surface-dark opacity-50"></div>
       <div className="absolute inset-0 opacity-30" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
       }}></div>
@@ -28,7 +28,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-primary-600 dark:text-primary-400 font-medium mb-4"
+            className="text-accent font-medium mb-4"
           >
             Hi, my name is
           </motion.p>
@@ -38,7 +38,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-copy dark:text-copy-dark mb-6"
           >
             {name}.
           </motion.h1>
@@ -48,7 +48,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-700 dark:text-gray-300 mb-8"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-copy dark:text-copy-dark mb-8"
           >
             {tagline}
           </motion.h2>
@@ -58,7 +58,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl text-muted dark:text-muted-dark mb-12 max-w-2xl mx-auto leading-relaxed"
           >
             {description}
           </motion.p>
@@ -102,7 +102,7 @@ const Hero = () => {
           onClick={() => scrollToSection('#about')}
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+          className="text-muted dark:text-muted-dark hover:text-accent dark:hover:text-accent transition-colors duration-200"
         >
           <FiArrowDownCircle size={24} />
         </motion.button>

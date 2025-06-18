@@ -25,7 +25,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 font-medium"
+              className="inline-flex items-center gap-2 text-muted dark:text-muted-dark hover:text-accent dark:hover:text-accent transition-colors duration-200 font-medium"
             >
               <FiGithub size={20} />
               <span>View this project on GitHub</span>
@@ -38,7 +38,7 @@ const Footer = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-gray-500 dark:text-gray-400 text-sm"
+            className="text-muted dark:text-muted-dark text-sm"
           >
             <p className="flex items-center justify-center gap-2">
               <span>© {currentYear} {footer.loveCopyright}</span>
@@ -52,7 +52,7 @@ const Footer = () => {
       <div className="w-full flex items-center justify-center mt-4">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="flex items-center justify-center gap-2 text-primary-600 dark:text-primary-400 hover:underline focus:outline-none text-sm font-normal leading-[1.2] animate-float"
+          className="flex items-center justify-center gap-2 text-accent dark:text-accent hover:underline focus:outline-none text-sm font-normal leading-[1.2] animate-float"
           aria-label="Scroll back to top"
           style={{ animation: 'float 2.5s ease-in-out infinite' }}
         >

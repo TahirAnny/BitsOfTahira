@@ -37,7 +37,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/80 dark:bg-dark-900/80 backdrop-blur-md shadow-lg'
+          ? 'bg-surface/80 dark:bg-surface-dark/80 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
       }`}
     >
@@ -57,7 +57,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 font-medium"
+                className="text-copy dark:text-copy-dark hover:text-accent dark:hover:text-accent transition-colors duration-200 font-medium"
               >
                 {item.name}
               </button>
@@ -68,7 +68,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={toggleDarkMode}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-dark-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-700 transition-colors duration-200"
+              className="p-2 rounded-lg bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark hover:bg-bg dark:hover:bg-bg-dark transition-colors duration-200"
             >
               {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
             </motion.button>
@@ -80,14 +80,14 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={toggleDarkMode}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-dark-800 text-gray-700 dark:text-gray-300"
+              className="p-2 rounded-lg bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark"
             >
               {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
             </motion.button>
             
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-dark-800 text-gray-700 dark:text-gray-300"
+              className="p-2 rounded-lg bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark"
             >
               {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
@@ -98,14 +98,14 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         <motion.div
           initial={false}
           animate={isOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
-          className="md:hidden overflow-hidden bg-white dark:bg-dark-900 border-t border-gray-200 dark:border-dark-700"
+          className="md:hidden overflow-hidden bg-surface dark:bg-surface-dark border-t border-muted/20 dark:border-muted-dark/20"
         >
           <div className="py-4 space-y-2">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-800 transition-colors duration-200"
+                className="block w-full text-left px-4 py-2 text-copy dark:text-copy-dark hover:bg-bg dark:hover:bg-bg-dark transition-colors duration-200"
               >
                 {item.name}
               </button>

@@ -8,6 +8,28 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Semantic color system
+        bg: {
+          DEFAULT: '#f8fafc', // Light mode background
+          dark: '#0f172a',    // Dark mode background
+        },
+        surface: {
+          DEFAULT: '#ffffff', // Light mode surface
+          dark: '#1e293b',    // Dark mode surface
+        },
+        copy: {
+          DEFAULT: '#1f2937', // Light mode text
+          dark: '#e2e8f0',    // Dark mode text
+        },
+        muted: {
+          DEFAULT: '#6b7280', // Light mode muted text
+          dark: '#94a3b8',    // Dark mode muted text
+        },
+        accent: {
+          DEFAULT: '#14b8a6', // Light mode accent
+          dark: '#0ea5e9',    // Dark mode accent
+        },
+        // Keep primary colors for backward compatibility
         primary: {
           50: '#f0f9ff',
           100: '#e0f2fe',
