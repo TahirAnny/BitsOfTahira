@@ -5,7 +5,7 @@ import { SiStackoverflow } from 'react-icons/si';
 import { personalInfo } from '../config/personalInfo';
 
 const Contact = () => {
-  const { email } = personalInfo;
+  const { email, socialLinks } = personalInfo;
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -165,7 +165,7 @@ const Contact = () => {
                 <motion.a
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.9 }}
-                  href={personalInfo.contact.contactInfo[0].link} target="_blank" rel="noopener noreferrer"
+                  href={socialLinks.github} target="_blank" rel="noopener noreferrer"
                   className="p-3 bg-surface dark:bg-surface-dark rounded-lg text-muted dark:text-muted-dark hover:text-accent dark:hover:text-accent hover:bg-bg dark:hover:bg-bg-dark transition-all duration-200"
                 >
                   <FiGithub size={20} />
@@ -173,7 +173,7 @@ const Contact = () => {
                 <motion.a
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.9 }}
-                  href={personalInfo.contact.contactInfo[1].link} target="_blank" rel="noopener noreferrer"
+                  href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer"
                   className="p-3 bg-surface dark:bg-surface-dark rounded-lg text-muted dark:text-muted-dark hover:text-accent dark:hover:text-accent hover:bg-bg dark:hover:bg-bg-dark transition-all duration-200"
                 >
                   <FiLinkedin size={20} />
@@ -181,7 +181,7 @@ const Contact = () => {
                 <motion.a
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.9 }}
-                  href={personalInfo.contact.contactInfo[2].link} target="_blank" rel="noopener noreferrer"
+                  href={socialLinks.stackoverflow} target="_blank" rel="noopener noreferrer"
                   className="p-3 bg-surface dark:bg-surface-dark rounded-lg text-muted dark:text-muted-dark hover:text-orange-500 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all duration-200"
                 >
                   <SiStackoverflow size={20} />
