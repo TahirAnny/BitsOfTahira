@@ -167,7 +167,7 @@ const Contact = () => {
                   href={personalInfo.contact.contactInfo[0].link} target="_blank" rel="noopener noreferrer"
                   className="p-3 bg-surface dark:bg-surface-dark rounded-lg text-muted dark:text-muted-dark hover:text-accent dark:hover:text-accent hover:bg-bg dark:hover:bg-bg-dark transition-all duration-200"
                 >
-                  <SiGithub size={20} />
+                  <FiGithub size={20} />
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.1, y: -2 }}
@@ -175,7 +175,7 @@ const Contact = () => {
                   href={personalInfo.contact.contactInfo[1].link} target="_blank" rel="noopener noreferrer"
                   className="p-3 bg-surface dark:bg-surface-dark rounded-lg text-muted dark:text-muted-dark hover:text-accent dark:hover:text-accent hover:bg-bg dark:hover:bg-bg-dark transition-all duration-200"
                 >
-                  <SiLinkedin size={20} />
+                  <FiLinkedin size={20} />
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.1, y: -2 }}
