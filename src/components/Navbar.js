@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
+import noise from '../assets/noise.png';
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,16 +41,17 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           ? 'bg-surface/80 dark:bg-surface-dark/80 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
       }`}
+      style={scrolled ? {
+        backgroundImage: `url(${noise})`,
+        backgroundRepeat: 'repeat',
+        backgroundSize: 'auto',
+        backgroundPosition: 'center'
+      } : {}}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold gradient-text"
-          >
-            Tahira
-          </motion.div>
+          <div className="logo flex items-center gap-2" tabIndex="-1"></div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -69,6 +71,12 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               whileTap={{ scale: 0.9 }}
               onClick={toggleDarkMode}
               className="p-2 rounded-lg bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark hover:bg-bg dark:hover:bg-bg-dark transition-colors duration-200"
+              style={{
+                backgroundImage: `url(${noise})`,
+                backgroundRepeat: 'repeat',
+                backgroundSize: 'auto',
+                backgroundPosition: 'center'
+              }}
             >
               {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
             </motion.button>

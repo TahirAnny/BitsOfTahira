@@ -4,6 +4,7 @@ import { FiMail, FiPhone, FiMapPin, FiSend, FiGithub, FiLinkedin } from 'react-i
 import { SiStackoverflow } from 'react-icons/si';
 import emailjs from '@emailjs/browser';
 import { personalInfo } from '../config/personalInfo';
+import noise from '../assets/noise.png';
 
 const Contact = () => {
   const { email, socialLinks } = personalInfo;
@@ -190,6 +191,12 @@ const Contact = () => {
                   whileTap={{ scale: 0.9 }}
                   href={socialLinks.github} target="_blank" rel="noopener noreferrer"
                   className="p-3 bg-surface dark:bg-surface-dark rounded-lg text-muted dark:text-muted-dark hover:text-white dark:hover:text-white hover:bg-bg dark:hover:bg-bg-dark transition-all duration-200"
+                  style={{
+                    backgroundImage: `url(${noise})`,
+                    backgroundRepeat: 'repeat',
+                    backgroundSize: 'auto',
+                    backgroundPosition: 'center'
+                  }}
                 >
                   <FiGithub size={20} />
                 </motion.a>
@@ -198,6 +205,12 @@ const Contact = () => {
                   whileTap={{ scale: 0.9 }}
                   href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer"
                   className="p-3 bg-surface dark:bg-surface-dark rounded-lg text-muted dark:text-muted-dark hover:text-primary-600 dark:hover:text-primary-600 hover:bg-bg dark:hover:bg-bg-dark transition-all duration-200"
+                  style={{
+                    backgroundImage: `url(${noise})`,
+                    backgroundRepeat: 'repeat',
+                    backgroundSize: 'auto',
+                    backgroundPosition: 'center'
+                  }}
                 >
                   <FiLinkedin size={20} />
                 </motion.a>
@@ -206,6 +219,12 @@ const Contact = () => {
                   whileTap={{ scale: 0.9 }}
                   href={socialLinks.stackoverflow} target="_blank" rel="noopener noreferrer"
                   className="p-3 bg-surface dark:bg-surface-dark rounded-lg text-muted dark:text-muted-dark hover:text-orange-500 dark:hover:text-orange-500 hover:bg-bg dark:hover:bg-bg-dark transition-all duration-200"
+                  style={{
+                    backgroundImage: `url(${noise})`,
+                    backgroundRepeat: 'repeat',
+                    backgroundSize: 'auto',
+                    backgroundPosition: 'center'
+                  }}
                 >
                   <SiStackoverflow size={20} />
                 </motion.a>
@@ -234,6 +253,12 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-muted/30 dark:border-muted-dark/30 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark transition-colors duration-200"
+                    style={{
+                      backgroundImage: `url(${noise})`,
+                      backgroundRepeat: 'repeat',
+                      backgroundSize: 'auto',
+                      backgroundPosition: 'center'
+                    }}
                     placeholder="Your name"
                   />
                 </div>
@@ -249,6 +274,12 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-muted/30 dark:border-muted-dark/30 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark transition-colors duration-200"
+                    style={{
+                      backgroundImage: `url(${noise})`,
+                      backgroundRepeat: 'repeat',
+                      backgroundSize: 'auto',
+                      backgroundPosition: 'center'
+                    }}
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -266,6 +297,12 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 border border-muted/30 dark:border-muted-dark/30 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark transition-colors duration-200"
+                  style={{
+                    backgroundImage: `url(${noise})`,
+                    backgroundRepeat: 'repeat',
+                    backgroundSize: 'auto',
+                    backgroundPosition: 'center'
+                  }}
                   placeholder="What's this about?"
                 />
               </div>
@@ -282,6 +319,12 @@ const Contact = () => {
                   required
                   rows={6}
                   className="w-full px-4 py-3 border border-muted/30 dark:border-muted-dark/30 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark transition-colors duration-200 resize-none"
+                  style={{
+                    backgroundImage: `url(${noise})`,
+                    backgroundRepeat: 'repeat',
+                    backgroundSize: 'auto',
+                    backgroundPosition: 'center'
+                  }}
                   placeholder="Your message..."
                 ></textarea>
               </div>

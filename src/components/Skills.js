@@ -19,6 +19,7 @@ import {
 import SkillTree from './SkillTree';
 import { personalInfo } from '../config/personalInfo';
 import TagCanvasCloud from './TagCanvasCloud';
+import noise from '../assets/noise.png';
 
 const Skills = () => {
   const [viewMode, setViewMode] = useState('tree'); // 'tree', 'list', or 'cloud'
@@ -81,7 +82,7 @@ const Skills = () => {
           
           {/* View Mode Toggle */}
           <div className="flex justify-center items-center space-x-4 mb-8">
-            <button
+            {/* <button
               onClick={() => setViewMode('tree')}
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
                 viewMode === 'tree'
@@ -91,7 +92,7 @@ const Skills = () => {
             >
               <FiGrid size={18} />
               <span>Interactive Tree</span>
-            </button>
+            </button> */}
             {/* 
             <button
               onClick={() => setViewMode('list')}
@@ -130,7 +131,7 @@ const Skills = () => {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div className="bg-surface dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden">
               <div className="p-6 border-b border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                   Interactive Skill Tree
@@ -139,7 +140,15 @@ const Skills = () => {
                   Explore my skills through an interactive force-directed visualization. 
                 </p>
               </div>
-              <div className="relative h-[700px]">
+              <div 
+                className="relative h-[700px] border-gray-200 dark:border-gray-700"
+                style={{
+                  backgroundImage: `url(${noise})`,
+                  backgroundRepeat: 'repeat',
+                  backgroundSize: 'auto',
+                  backgroundPosition: 'center'
+                }}
+              >
                 <SkillTree />
               </div>
             </div>
@@ -234,24 +243,34 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-16 text-center flex justify-center"
         >
-          <div className="bg-white dark:bg-dark-700 rounded-2xl p-8 shadow-xl max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Always Learning
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+          <div 
+            className="bg-surface dark:bg-surface-dark p-6 rounded-lg shadow-lg flex flex-col h-full space-y-4 min-h-[260px]"
+            style={{
+              backgroundImage: `url(${noise})`,
+              backgroundRepeat: 'repeat',
+              backgroundSize: 'auto',
+              backgroundPosition: 'center'
+            }}
+          >
+            <div className="flex justify-between items-start">
+              <h4 className="card-title text-white transition-colors duration-300 group-hover:text-[#A1A79E] text-2xl font-bold mb-2 text-center w-full">
+                Always Learning
+              </h4>
+            </div>
+            <p className="card-desc flex-grow text-muted dark:text-muted-dark leading-relaxed mb-2">
               I'm constantly expanding my skill set and staying up-to-date with the latest 
               technologies and best practices in software development. Currently, I'm exploring 
               new areas and deepening my expertise in emerging technologies.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              {personalInfo.skills.additionalSkills.slice(0, 8).map((skill, index) => (
-                <span 
-                  key={skill}
-                  className="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium"
+            <div className="flex flex-wrap justify-center gap-2 mt-auto">
+              {personalInfo.skills.additionalSkills.slice(0, 8).map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1 text-xs font-medium text-copy dark:text-copy-dark bg-muted/20 dark:bg-muted-dark/20 backdrop-blur-sm rounded-full border border-muted/30 dark:border-muted-dark/30 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-muted/30 dark:hover:bg-muted-dark/30 hover:border-muted/40 dark:hover:border-muted-dark/40"
                 >
-                  {skill}
+                  {tech}
                 </span>
               ))}
             </div>
@@ -269,4 +288,4 @@ const Skills = () => {
   );
 };
 
-export default Skills; 
+export default Skills;

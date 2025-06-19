@@ -1,8 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Montserrat:wght@400;700&family=Orbitron:wght@400;700&family=Audiowide&display=swap');
 /* stylelint-disable at-rule-no-unknown */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 /* stylelint-enable at-rule-no-unknown */
+
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --primary: #14b8a6;
+  --secondary: #f6e7cb;
+  --text: #1f2937;
+  --muted: #6b7280;
+}
+
+body.palette4 {
+  --bg: #f6f5f3;
+  --surface: #88A5BC;
+  --primary: #88A5BC;
+  --secondary: #A1A79E;
+  --text: #22223b;
+  --muted: #7c7c7c;
+}
 
 @layer base {
   html {
@@ -10,7 +29,23 @@
   }
   
   body {
-    @apply bg-white dark:bg-dark-900 text-gray-900 dark:text-gray-100 transition-colors duration-300;
+    @apply text-gray-900 dark:text-gray-100 transition-colors duration-300;
+    background-color: var(--bg);
+    color: var(--text);
+    background-image: url('./assets/noise.png');
+    background-repeat: repeat;
+    background-size: auto;
+    background-attachment: fixed;
+    background-position: center;
+  }
+  
+  .dark body {
+    background-color: rgb(24, 24, 27);
+    background-image: url('./assets/noise.png');
+    background-repeat: repeat;
+    background-size: auto;
+    background-attachment: fixed;
+    background-position: center;
   }
 }
 
@@ -24,18 +59,92 @@
   }
   
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200;
+    background-color: var(--primary);
+    color: #fff;
+    @apply font-medium py-3 px-6 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--secondary);
+    color: var(--text);
   }
   
   .btn-secondary {
-    @apply bg-transparent border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200;
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    @apply font-medium py-3 px-6 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary:hover {
+    background-color: var(--primary);
+    color: #fff;
   }
   
   .card {
-    @apply bg-white dark:bg-dark-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6;
+    background-color: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--secondary);
+    @apply rounded-xl shadow transition-shadow duration-300 p-6;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .card:hover {
+    border-color: var(--primary);
+    @apply shadow-lg -translate-y-1;
+  }
+  .card-title {
+    color: var(--text);
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .card-desc {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .card-tag {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 500;
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    box-shadow: 0 1px 2px rgba(34,34,35,0.08);
+    transition: background 0.2s;
+  }
+  .card-tag:last-child {
+    margin-right: 0;
+  }
+  
+  .project-card {
+    background-color: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--secondary);
+    @apply rounded-xl shadow transition-shadow duration-300 p-6;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .project-card:hover {
+    border-color: var(--primary);
+    @apply shadow-lg -translate-y-1;
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+}
+
+@layer utilities {
+  .drop-shadow-glow {
+    filter: drop-shadow(0 0 8px #38bdf8) drop-shadow(0 0 16px #38bdf8);
   }
 } 

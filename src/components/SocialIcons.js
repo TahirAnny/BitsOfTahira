@@ -52,7 +52,6 @@ const SocialIcons = () => {
             {social.icon}
           </motion.a>
         ))}
-        
         {/* Vertical line */}
         <div className="w-px h-20 bg-gray-300 dark:bg-gray-600 mt-4"></div>
       </div>

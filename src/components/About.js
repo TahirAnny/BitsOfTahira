@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiDownload } from 'react-icons/fi';
 import { personalInfo } from '../config/personalInfo';
+import noise from '../assets/noise.png';
 
 const About = () => {
 
@@ -74,7 +75,15 @@ const About = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="bg-surface dark:bg-surface-dark rounded-2xl p-8 shadow-xl">
+            <div 
+              className="bg-surface dark:bg-surface-dark rounded-2xl p-8 shadow-xl"
+              style={{
+                backgroundImage: `url(${noise})`,
+                backgroundRepeat: 'repeat',
+                backgroundSize: 'auto',
+                backgroundPosition: 'center'
+              }}
+            >
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-accent mb-2">

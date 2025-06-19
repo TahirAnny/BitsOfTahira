@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import { personalInfo } from '../config/personalInfo';
+import noise from '../assets/noise.png';
 
 const Projects = () => {
   const { projects } = personalInfo;
@@ -82,7 +83,15 @@ const Projects = () => {
                       </motion.a>
                     </div>
                   </div>
-                  <div className="bg-surface dark:bg-surface-dark p-6 rounded-lg shadow-lg">
+                  <div 
+                    className="bg-surface dark:bg-surface-dark p-6 rounded-lg shadow-lg"
+                    style={{
+                      backgroundImage: `url(${noise})`,
+                      backgroundRepeat: 'repeat',
+                      backgroundSize: 'auto',
+                      backgroundPosition: 'center'
+                    }}
+                  >
                     <p className="text-muted dark:text-muted-dark leading-relaxed mb-4">
                       {project.description}
                     </p>
@@ -124,12 +133,20 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="card group flex flex-col h-full"
+              className="group flex flex-col h-full"
             >
-              <div className="flex flex-col h-full space-y-4">
+              <div 
+                className="bg-surface dark:bg-surface-dark p-6 rounded-lg shadow-lg flex flex-col h-full space-y-4"
+                style={{
+                  backgroundImage: `url(${noise})`,
+                  backgroundRepeat: 'repeat',
+                  backgroundSize: 'auto',
+                  backgroundPosition: 'center'
+                }}
+              >
                 <div className="flex justify-between items-start">
-                  <div className="text-accent">
-                    <h4 className="text-xl font-bold text-copy dark:text-copy-dark group-hover:text-accent dark:group-hover:text-accent transition-colors duration-200">
+                  <div>
+                    <h4 className="card-title text-white transition-colors duration-300 group-hover:text-[#A1A79E]">
                       {project.title}
                     </h4>
                   </div>
@@ -138,7 +155,7 @@ const Projects = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted dark:text-muted-dark hover:text-accent dark:hover:text-accent transition-colors duration-200"
+                      className="text-muted hover:text-primary transition-colors duration-200"
                     >
                       <FiGithub size={18} />
                     </a>
@@ -146,13 +163,13 @@ const Projects = () => {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted dark:text-muted-dark hover:text-accent dark:hover:text-accent transition-colors duration-200"
+                      className="text-muted hover:text-primary transition-colors duration-200"
                     >
                       <FiExternalLink size={18} />
                     </a>
                   </div>
                 </div>
-                <p className="text-muted dark:text-muted-dark text-sm leading-relaxed flex-grow">
+                <p className="card-desc flex-grow">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mt-auto">

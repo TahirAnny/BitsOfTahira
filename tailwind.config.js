@@ -29,6 +29,14 @@ module.exports = {
           DEFAULT: '#14b8a6', // Light mode accent
           dark: '#0ea5e9',    // Dark mode accent
         },
+        palette4: {
+          bg: '#f6f5f3',
+          surface: '#ffffff',
+          primary: '#88A5BC',
+          secondary: '#A1A79E',
+          text: '#22223b',
+          muted: '#7c7c7c',
+        },
         // Keep primary colors for backward compatibility
         primary: {
           50: '#f0f9ff',
@@ -58,6 +66,10 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['Fira Code', 'monospace'],
+        montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui'],
+        jetbrains: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        orbitron: ['Orbitron', 'Montserrat', 'ui-sans-serif', 'system-ui'],
+        audiowide: ['Audiowide', 'Montserrat', 'ui-sans-serif', 'system-ui'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

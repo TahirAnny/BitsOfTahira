@@ -46,7 +46,7 @@ const SkillTree = () => {
         .attr("viewBox", [0, 0, width, height])
         .attr("width", "100%")
         .attr("height", height)
-        .style("background", "#0f172a");
+        .style("background", "transparent");
 
       const simulation = d3
         .forceSimulation(nodes)
