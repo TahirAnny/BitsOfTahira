@@ -27,6 +27,23 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    // Debug: Check if environment variables are loaded
+    console.log('Environment variables check:', {
+      serviceId: process.env.REACT_APP_EMAILJS_SERVICE_ID ? 'Loaded' : 'Missing',
+      templateId: process.env.REACT_APP_EMAILJS_TEMPLATE_ID ? 'Loaded' : 'Missing',
+      publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY ? 'Loaded' : 'Missing'
+    });
+
+    // Check if all required environment variables are present
+    if (!process.env.REACT_APP_EMAILJS_SERVICE_ID || 
+        !process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 
+        !process.env.REACT_APP_EMAILJS_PUBLIC_KEY) {
+      console.error('Missing EmailJS environment variables');
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const result = await emailjs.send(
         process.env.REACT_APP_EMAILJS_SERVICE_ID,
