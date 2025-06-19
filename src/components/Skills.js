@@ -105,7 +105,7 @@ const Skills = () => {
               <FiList size={18} />
               <span>List View</span>
             </button>
-             */}
+             
             <button
               onClick={() => setViewMode('cloud')}
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
@@ -117,6 +117,8 @@ const Skills = () => {
               <FiZap size={18} />
               <span>Tag Cloud</span>
             </button>
+
+            */}
           </div>
         </motion.div>
 
@@ -135,7 +137,6 @@ const Skills = () => {
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
                   Explore my skills through an interactive force-directed visualization. 
-                  Each node represents a skill with experience level and years of practice.
                 </p>
               </div>
               <div className="relative h-[700px]">
