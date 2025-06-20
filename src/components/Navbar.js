@@ -140,7 +140,7 @@ const Navbar = ({ activeSection, darkMode, toggleDarkMode }) => {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: '150%', opacity: 0 }}
               transition={{ type: 'spring', stiffness: 150, damping: 25 }}
-              className="fixed z-50 top-8 right-8 flex flex-col items-center gap-2 p-1 rounded-full shadow-lg bg-surface/80 dark:bg-surface-dark/80 backdrop-blur-md"
+              className="fixed z-50 top-4 right-8 flex flex-col items-center gap-2 p-1 rounded-full shadow-lg bg-surface/80 dark:bg-surface-dark/80 backdrop-blur-md"
               style={{
                 backgroundImage: `url(${noise})`,
                 backgroundRepeat: 'repeat',
@@ -160,7 +160,7 @@ const Navbar = ({ activeSection, darkMode, toggleDarkMode }) => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -100, opacity: 0 }}
               transition={{ type: 'spring', stiffness: 150, damping: 25 }}
-              className="fixed z-50 top-8 left-0 right-0 mx-auto w-max flex items-center gap-2 p-1 rounded-full shadow-lg bg-surface/80 dark:bg-surface-dark/80 backdrop-blur-md"
+              className="fixed z-50 top-4 left-0 right-0 mx-auto w-max flex items-center gap-2 p-1 rounded-full shadow-lg bg-surface/80 dark:bg-surface-dark/80 backdrop-blur-md"
               style={{
                 backgroundImage: `url(${noise})`,
                 backgroundRepeat: 'repeat',
