@@ -6,7 +6,7 @@ const EmailLink = () => {
   const { email } = personalInfo;
 
   return (
-    <div className="hidden lg:block fixed bottom-0 right-0 z-40">
+    <div className="hidden lg:block fixed bottom-0 right-8 z-40">
       <div className="flex flex-col items-center space-y-4 pr-4">
         <motion.a
           href={`mailto:${email}`}

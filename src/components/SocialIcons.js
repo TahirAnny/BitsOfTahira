@@ -29,7 +29,7 @@ const SocialIcons = () => {
   ];
 
   return (
-    <div className="hidden lg:block fixed bottom-0 left-8 z-40">
+    <div className="hidden lg:block fixed bottom-0 left-12 z-40">
       <div className="flex flex-col items-center space-y-4">
         {socialLinksConfig.map((social, index) => (
           <motion.a
