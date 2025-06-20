@@ -73,8 +73,8 @@ body.palette4 {
   }
   
   .btn-secondary:hover {
-    background-color: var(--primary);
-    color: #fff;
+    background-color: var(--secondary);
+    color: var(--text);
   }
   
   .card {

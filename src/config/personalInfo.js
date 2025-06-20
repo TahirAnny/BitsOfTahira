@@ -5,10 +5,10 @@ import bookyImage from "../assets/booky.jpg";
 
 export const personalInfo = {
   // Basic Information
-  name: "Tahira",
+  name: "Tahira.",
   fullName: "Tahira Bishwas Anny",
-  title: "Software Engineer",
-  tagline: "I build things for the web.",
+  title: "Full-stack Software Engineer",
+  tagline: "Crafting delightful digital experiences with code, creativity, and a dash of curiosity.",
   description: "I'm a software engineer specializing in building exceptional digital experiences. Currently, I'm focused on building accessible, human-centered products.",
 
   // Contact Information
