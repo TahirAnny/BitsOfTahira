@@ -1,11 +1,12 @@
 import React, { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowDownCircle } from 'react-icons/fi';
+import { Typewriter } from 'react-simple-typewriter';
 import { personalInfo } from '../config/personalInfo';
 
-const Hero = forwardRef((props, ref) => {
-  const { name, tagline, description } = personalInfo;
+const { name, tagline, description, title } = personalInfo;
 
+const Hero = forwardRef((props, ref) => {
   const scrollToSection = (sectionId) => {
     const element = document.querySelector(sectionId);
     if (element) {
@@ -22,39 +23,47 @@ const Hero = forwardRef((props, ref) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-accent font-medium mb-4"
+            className="text-muted dark:text-muted-dark font-medium mb-4"
           >
             Hi, my name is
           </motion.p>
 
-          {/* Name */}
+          {/* Name with Typing Effect */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl sm:text-6xl lg:text-7xl font-bold text-copy dark:text-copy-dark mb-6"
           >
-            {name}.
+            <Typewriter
+              words={[name]}
+              loop={1}
+              cursor
+              cursorStyle='_'
+              typeSpeed={120}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
           </motion.h1>
 
-          {/* Tagline */}
+          {/* Title */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-copy dark:text-copy-dark mb-8"
+            className="text-3xl sm:text-4xl lg:text-4xl text-copy dark:text-copy-dark mb-4 italic"
           >
-            {tagline}
+            {title}
           </motion.h2>
 
-          {/* Description */}
+          {/* Tagline */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg sm:text-xl text-muted dark:text-muted-dark mb-12 max-w-2xl leading-relaxed"
           >
-            {description}
+            {tagline}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -81,7 +90,6 @@ const Hero = forwardRef((props, ref) => {
               View My Work
             </motion.button>
           </motion.div>
-
         </div>
       </div>
 

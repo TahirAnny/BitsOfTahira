@@ -60,7 +60,7 @@ const About = forwardRef((props, ref) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={downloadResume}
-                className="btn-primary inline-flex items-center gap-2"
+                className="btn-secondary inline-flex items-center gap-2"
               >
                 <FiDownload size={20} />
                 Download Resume
