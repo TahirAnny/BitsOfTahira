@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiHome, FiUser, FiBriefcase, FiTool, FiMail, FiSun, FiMoon } from 'react-icons/fi';
+import { FiHome, FiUser, FiBriefcase, FiTool, FiMail, FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
 import noise from '../assets/noise.png';
 
 const navItems = [
@@ -60,6 +60,7 @@ const DarkModeToggle = ({ darkMode, toggleDarkMode }) => {
 
 const Navbar = ({ activeSection, darkMode, toggleDarkMode }) => {
   const [isDocked, setIsDocked] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,53 +80,103 @@ const Navbar = ({ activeSection, darkMode, toggleDarkMode }) => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setMobileOpen(false); // Close menu on link click
     }
   };
 
+  // Hamburger menu for mobile
   return (
-    <AnimatePresence>
-      {isDocked ? (
-        <motion.div
-          key="docked-nav"
-          initial={{ x: '150%', opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: '150%', opacity: 0 }}
-          transition={{ type: 'spring', stiffness: 150, damping: 25 }}
-          className="fixed z-50 top-8 right-8 flex flex-col items-center gap-2 p-1 rounded-full shadow-lg bg-surface/80 dark:bg-surface-dark/80 backdrop-blur-md"
-          style={{
-            backgroundImage: `url(${noise})`,
-            backgroundRepeat: 'repeat',
-            backgroundSize: 'auto',
-            backgroundPosition: 'center'
-          }}
+    <>
+      {/* Hamburger icon for mobile */}
+      <div className="fixed z-[100] top-6 right-6 flex lg:hidden">
+        <button
+          className="p-2 rounded-lg bg-surface/80 dark:bg-surface-dark/80 shadow-lg backdrop-blur-md"
+          onClick={() => setMobileOpen(true)}
+          aria-label="Open menu"
         >
-          {navItems.map((item) => (
-            <NavItem key={item.name} item={item} activeSection={activeSection} scrollToSection={scrollToSection} />
-          ))}
-          <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        </motion.div>
-      ) : (
-        <motion.div
-          key="centered-nav"
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -100, opacity: 0 }}
-          transition={{ type: 'spring', stiffness: 150, damping: 25 }}
-          className="fixed z-50 top-8 left-0 right-0 mx-auto w-max flex items-center gap-2 p-1 rounded-full shadow-lg bg-surface/80 dark:bg-surface-dark/80 backdrop-blur-md"
-          style={{
-            backgroundImage: `url(${noise})`,
-            backgroundRepeat: 'repeat',
-            backgroundSize: 'auto',
-            backgroundPosition: 'center'
-          }}
-        >
-          {navItems.map((item) => (
-            <NavItem key={item.name} item={item} activeSection={activeSection} scrollToSection={scrollToSection} />
-          ))}
-          <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        </motion.div>
-      )}
-    </AnimatePresence>
+          <FiMenu size={28} />
+        </button>
+      </div>
+      {/* Mobile menu overlay */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-surface/95 dark:bg-surface-dark/95 backdrop-blur-md lg:hidden"
+            style={{ backgroundImage: `url(${noise})`, backgroundRepeat: 'repeat', backgroundSize: 'auto', backgroundPosition: 'center' }}
+          >
+            <button
+              className="absolute top-6 right-6 p-2 rounded-lg bg-surface/80 dark:bg-surface-dark/80 shadow-lg"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close menu"
+            >
+              <FiX size={28} />
+            </button>
+            <nav className="flex flex-col gap-8 items-center mt-8">
+              {navItems.map((item) => (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
+                  className={`flex items-center gap-3 text-2xl font-semibold ${activeSection === item.name.toLowerCase() ? 'text-accent' : 'text-copy dark:text-copy-dark'}`}
+                >
+                  {item.icon}
+                  {item.name}
+                </button>
+              ))}
+              <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {/* Desktop/capsule navbar (hidden on mobile) */}
+      <AnimatePresence>
+        <div className="hidden lg:block">
+          {isDocked ? (
+            <motion.div
+              key="docked-nav"
+              initial={{ x: '150%', opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: '150%', opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 150, damping: 25 }}
+              className="fixed z-50 top-8 right-8 flex flex-col items-center gap-2 p-1 rounded-full shadow-lg bg-surface/80 dark:bg-surface-dark/80 backdrop-blur-md"
+              style={{
+                backgroundImage: `url(${noise})`,
+                backgroundRepeat: 'repeat',
+                backgroundSize: 'auto',
+                backgroundPosition: 'center'
+              }}
+            >
+              {navItems.map((item) => (
+                <NavItem key={item.name} item={item} activeSection={activeSection} scrollToSection={scrollToSection} />
+              ))}
+              <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="centered-nav"
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -100, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 150, damping: 25 }}
+              className="fixed z-50 top-8 left-0 right-0 mx-auto w-max flex items-center gap-2 p-1 rounded-full shadow-lg bg-surface/80 dark:bg-surface-dark/80 backdrop-blur-md"
+              style={{
+                backgroundImage: `url(${noise})`,
+                backgroundRepeat: 'repeat',
+                backgroundSize: 'auto',
+                backgroundPosition: 'center'
+              }}
+            >
+              {navItems.map((item) => (
+                <NavItem key={item.name} item={item} activeSection={activeSection} scrollToSection={scrollToSection} />
+              ))}
+              <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            </motion.div>
+          )}
+        </div>
+      </AnimatePresence>
+    </>
   );
 };
 

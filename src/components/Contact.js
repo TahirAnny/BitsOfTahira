@@ -81,17 +81,17 @@ const Contact = forwardRef((props, ref) => {
       value: personalInfo.contact.contactInfo[0].value,
       link: personalInfo.contact.contactInfo[0].link
     },
+    // {
+    //   icon: <FiPhone size={24} />,
+    //   title: personalInfo.contact.contactInfo[1].title,
+    //   value: personalInfo.contact.contactInfo[1].value,
+    //   link: personalInfo.contact.contactInfo[1].link
+    // },
     {
-      icon: <FiPhone size={24} />,
+      icon: <FiMapPin size={24} />,
       title: personalInfo.contact.contactInfo[1].title,
       value: personalInfo.contact.contactInfo[1].value,
       link: personalInfo.contact.contactInfo[1].link
-    },
-    {
-      icon: <FiMapPin size={24} />,
-      title: personalInfo.contact.contactInfo[2].title,
-      value: personalInfo.contact.contactInfo[2].value,
-      link: personalInfo.contact.contactInfo[2].link
     }
   ];
 
