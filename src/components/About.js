@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiDownload } from 'react-icons/fi';
 import { personalInfo } from '../config/personalInfo';
-import noise from '../assets/noise.png';
+import tahiraImage from '../assets/Tahira.jpg';
 
 const About = forwardRef((props, ref) => {
 
@@ -29,13 +29,14 @@ const About = forwardRef((props, ref) => {
           <div className="w-24 h-1 bg-accent mx-auto"></div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
+            className="lg:col-span-3"
           >
             <div className="space-y-6">
               
@@ -67,62 +68,26 @@ const About = forwardRef((props, ref) => {
             </div>
           </motion.div>
 
-          {/* Image/Stats */}
+          {/* Profile Picture */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative lg:col-span-2 flex justify-center lg:justify-start"
           >
-            <div 
-              className="bg-surface dark:bg-surface-dark rounded-2xl p-8 shadow-xl"
-              style={{
-                backgroundImage: `url(${noise})`,
-                backgroundRepeat: 'repeat',
-                backgroundSize: 'auto',
-                backgroundPosition: 'center'
-              }}
-            >
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-accent mb-2">
-                    {about.stats.experience}
-                  </div>
-                  <div className="text-muted dark:text-muted-dark">
-                    Years of Experience
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-accent mb-2">
-                    {about.stats.projects}
-                  </div>
-                  <div className="text-muted dark:text-muted-dark">
-                    Projects Completed
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-accent mb-2">
-                    {about.stats.clients}
-                  </div>
-                  <div className="text-muted dark:text-muted-dark">
-                    Happy Clients
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-accent mb-2">
-                    {about.stats.technologies}
-                  </div>
-                  <div className="text-muted dark:text-muted-dark">
-                    Technologies
-                  </div>
-                </div>
+            <div className="relative w-full max-w-xs group mx-auto lg:mx-0">
+              {/* Image is on top with a z-index of 10 */}
+              <div className="relative z-10 p-1 bg-surface dark:bg-surface-dark rounded-md shadow-lg">
+                <img
+                  src={tahiraImage}
+                  alt="Tahira Bishwas Anny"
+                  className="w-full h-auto object-cover rounded filter grayscale group-hover:filter-none transition-all duration-300"
+                />
               </div>
+              {/* Accent color frame behind the image */}
+              <div className="absolute top-3 left-3 w-full h-full rounded-md bg-accent z-0 group-hover:top-2 group-hover:left-2 transition-all duration-300"></div>
             </div>
-            
-            {/* Decorative Elements */}
-            <div className="absolute -top-4 -right-4 w-20 h-20 bg-accent/20 rounded-full opacity-50"></div>
-            <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-accent/20 rounded-full opacity-50"></div>
           </motion.div>
         </div>
       </div>

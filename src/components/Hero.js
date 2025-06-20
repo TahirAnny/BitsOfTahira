@@ -2,7 +2,6 @@ import React, { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowDownCircle } from 'react-icons/fi';
 import { personalInfo } from '../config/personalInfo';
-import noise from '../assets/noise.png';
 
 const Hero = forwardRef((props, ref) => {
   const { name, tagline, description } = personalInfo;
@@ -17,7 +16,7 @@ const Hero = forwardRef((props, ref) => {
   return (
     <section ref={ref} id="home" className="section-padding min-h-screen flex items-center justify-center relative overflow-hidden">
       <div className="container-custom relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
+        <div className="max-w-4xl text-left">
           {/* Greeting */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -53,7 +52,7 @@ const Hero = forwardRef((props, ref) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg sm:text-xl text-muted dark:text-muted-dark mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl text-muted dark:text-muted-dark mb-12 max-w-2xl leading-relaxed"
           >
             {description}
           </motion.p>
@@ -63,7 +62,7 @@ const Hero = forwardRef((props, ref) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+            className="flex flex-col sm:flex-row gap-4 items-start mb-16"
           >
             <motion.button
               whileHover={{ scale: 1.05 }}
