@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import { personalInfo } from '../config/personalInfo';
 import noise from '../assets/noise.png';
 
-const Projects = () => {
+const Projects = forwardRef((props, ref) => {
   const { projects } = personalInfo;
   const featuredProjects = projects.filter(project => project.featured);
   const otherProjects = projects.filter(project => !project.featured);
 
   return (
-    <section id="projects" className="section-padding">
+    <section ref={ref} id="projects" className="section-padding">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -189,6 +189,6 @@ const Projects = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Projects; 

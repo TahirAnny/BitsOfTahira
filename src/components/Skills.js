@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { TagCloud } from 'react-tagcloud';
 import { 
@@ -21,7 +21,7 @@ import { personalInfo } from '../config/personalInfo';
 import TagCanvasCloud from './TagCanvasCloud';
 import noise from '../assets/noise.png';
 
-const Skills = () => {
+const Skills = forwardRef((props, ref) => {
   const [viewMode, setViewMode] = useState('tree'); // 'tree', 'list', or 'cloud'
 
   // Map category titles to icons
@@ -66,7 +66,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="section-padding">
+    <section ref={ref} id="skills" className="section-padding">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -286,6 +286,6 @@ const Skills = () => {
       `}</style>
     </section>
   );
-};
+});
 
 export default Skills;

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiDownload } from 'react-icons/fi';
 import { personalInfo } from '../config/personalInfo';
 import noise from '../assets/noise.png';
 
-const About = () => {
+const About = forwardRef((props, ref) => {
 
   const { about } = personalInfo;
 
@@ -14,7 +14,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="section-padding">
+    <section ref={ref} id="about" className="section-padding">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -128,6 +128,6 @@ const About = () => {
       </div>
     </section>
   );
-};
+});
 
 export default About; 

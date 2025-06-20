@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowDownCircle } from 'react-icons/fi';
 import { personalInfo } from '../config/personalInfo';
 import noise from '../assets/noise.png';
 
-const Hero = () => {
+const Hero = forwardRef((props, ref) => {
   const { name, tagline, description } = personalInfo;
 
   const scrollToSection = (sectionId) => {
@@ -15,7 +15,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="section-padding min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section ref={ref} id="home" className="section-padding min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Pattern */}
       <div 
         className="absolute inset-0 opacity-50"
@@ -118,6 +118,6 @@ const Hero = () => {
       </motion.div>
     </section>
   );
-};
+});
 
 export default Hero; 

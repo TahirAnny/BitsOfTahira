@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -14,6 +15,21 @@ import LoaderWrapper from './components/LoaderWrapper';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [activeSection, setActiveSection] = useState('home');
+
+  const { ref: homeRef, inView: homeInView } = useInView({ threshold: 0.5 });
+  const { ref: aboutRef, inView: aboutInView } = useInView({ threshold: 0.5 });
+  const { ref: projectsRef, inView: projectsInView } = useInView({ threshold: 0.5 });
+  const { ref: skillsRef, inView: skillsInView } = useInView({ threshold: 0.5 });
+  const { ref: contactRef, inView: contactInView } = useInView({ threshold: 0.5 });
+
+  useEffect(() => {
+    if (homeInView) setActiveSection('home');
+    else if (aboutInView) setActiveSection('about');
+    else if (projectsInView) setActiveSection('projects');
+    else if (skillsInView) setActiveSection('skills');
+    else if (contactInView) setActiveSection('contact');
+  }, [homeInView, aboutInView, projectsInView, skillsInView, contactInView]);
 
   useEffect(() => {
     // Check for saved dark mode preference, default to dark mode if none saved
@@ -58,13 +74,13 @@ function App() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <Navbar activeSection={activeSection} />
         <main>
-          <Hero />
-          <About />
-          <Projects />
-          <Skills />
-          <Contact />
+          <Hero ref={homeRef} />
+          <About ref={aboutRef} />
+          <Projects ref={projectsRef} />
+          <Skills ref={skillsRef} />
+          <Contact ref={contactRef} />
         </main>
         <Footer />
         <SocialIcons />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin, FiSend, FiGithub, FiLinkedin } from 'react-icons/fi';
 import { SiStackoverflow } from 'react-icons/si';
@@ -6,7 +6,7 @@ import emailjs from '@emailjs/browser';
 import { personalInfo } from '../config/personalInfo';
 import noise from '../assets/noise.png';
 
-const Contact = () => {
+const Contact = forwardRef((props, ref) => {
   const { email, socialLinks } = personalInfo;
   const [formData, setFormData] = useState({
     name: '',
@@ -103,7 +103,7 @@ const Contact = () => {
   }, [submitStatus]);
 
   return (
-    <section id="contact" className="section-padding">
+    <section ref={ref} id="contact" className="section-padding">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -371,6 +371,6 @@ const Contact = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Contact; 
