@@ -65,7 +65,7 @@ function App() {
     <LoaderWrapper>
       {/* Logo at Top Left in Orbitron */}
       <div className="hidden lg:block fixed top-4 left-4 z-[100]">
-        <span className="text-lg font-bold select-none font-orbitron transition-all duration-300" style={{ color: 'var(--primary)' }}>{'<Tahira />'}</span>
+        <span className="text-lg font-bold select-none font-orbitron transition-all duration-300" style={{ color: '#14b8a6' }}>{'<TBA />'}</span>
       </div>
       {/* Animated Background */}
       {/* <AnimatedBackground /> */}
