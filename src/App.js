@@ -74,7 +74,7 @@ function App() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <Navbar activeSection={activeSection} />
+        <Navbar activeSection={activeSection} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <main>
           <Hero ref={homeRef} />
           <About ref={aboutRef} />

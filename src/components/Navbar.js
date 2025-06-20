@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiHome, FiUser, FiBriefcase, FiTool, FiMail } from 'react-icons/fi';
+import { FiHome, FiUser, FiBriefcase, FiTool, FiMail, FiSun, FiMoon } from 'react-icons/fi';
 import noise from '../assets/noise.png';
 
 const navItems = [
@@ -42,7 +42,23 @@ const NavItem = ({ item, activeSection, scrollToSection }) => {
   );
 };
 
-const Navbar = ({ activeSection }) => {
+const DarkModeToggle = ({ darkMode, toggleDarkMode }) => {
+  return (
+    <motion.button
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      onClick={toggleDarkMode}
+      className="relative p-2 rounded-lg transition-colors duration-200"
+      aria-label="Toggle dark mode"
+    >
+      <span className="transition-colors duration-300 text-copy dark:text-copy-dark hover:text-accent dark:hover:text-accent">
+        {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+      </span>
+    </motion.button>
+  );
+};
+
+const Navbar = ({ activeSection, darkMode, toggleDarkMode }) => {
   const [isDocked, setIsDocked] = useState(false);
 
   useEffect(() => {
@@ -86,6 +102,7 @@ const Navbar = ({ activeSection }) => {
           {navItems.map((item) => (
             <NavItem key={item.name} item={item} activeSection={activeSection} scrollToSection={scrollToSection} />
           ))}
+          <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         </motion.div>
       ) : (
         <motion.div
@@ -105,6 +122,7 @@ const Navbar = ({ activeSection }) => {
           {navItems.map((item) => (
             <NavItem key={item.name} item={item} activeSection={activeSection} scrollToSection={scrollToSection} />
           ))}
+          <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         </motion.div>
       )}
     </AnimatePresence>

@@ -15,7 +15,7 @@ module.exports = {
         },
         surface: {
           DEFAULT: '#ffffff', // Light mode surface
-          dark: '#1e293b',    // Dark mode surface
+          dark: 'rgb(35, 38, 43)',    // Dark mode surface
         },
         copy: {
           DEFAULT: '#1f2937', // Light mode text
