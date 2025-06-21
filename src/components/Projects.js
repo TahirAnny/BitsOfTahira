@@ -47,7 +47,7 @@ const Projects = forwardRef((props, ref) => {
                     alt={project.title}
                     className="w-full h-64 lg:h-96 object-cover rounded-lg shadow-lg filter grayscale group-hover:grayscale-0 transition-all duration-300"
                   />
-                  <div className="absolute inset-0 bg-[#332D56]/30 group-hover:bg-[#332D56]/0 transition-all duration-300 rounded-lg"></div>
+                  <div className="absolute inset-0 bg-[#111111]/30 group-hover:bg-[#111111]/0 transition-all duration-300 rounded-lg"></div>
                 </a>
               </div>
 
