@@ -54,13 +54,15 @@ const Projects = forwardRef((props, ref) => {
               {/* Project Content */}
               <div className={`lg:col-span-5 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
                 <div className="space-y-4">
-                  <p className="text-sm text-accent font-medium">
-                    Featured Project
-                  </p>
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-2xl lg:text-3xl font-bold text-copy dark:text-copy-dark">
-                      {project.title}
-                    </h3>
+                  <div className={`flex justify-between items-center ${index % 2 === 0 ? 'flex-row-reverse' : ''}`}>
+                    <div className={`${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
+                      <p className="text-sm text-accent font-medium">
+                        Featured Project
+                      </p>
+                      <h3 className="text-2xl lg:text-3xl font-bold text-copy dark:text-copy-dark">
+                        {project.title}
+                      </h3>
+                    </div>
                     <div className="flex space-x-2">
                       <motion.a
                         whileHover={{ scale: 1.05 }}
