@@ -12,8 +12,16 @@ const navItems = [
   { name: 'Contact', href: '#contact', icon: <FiMail size={20} /> },
 ];
 
-const NavItem = ({ item, activeSection, scrollToSection }) => {
+const NavItem = ({ item, activeSection, scrollToSection, isDocked }) => {
   const isActive = activeSection === item.name.toLowerCase();
+
+  const tooltipClasses = isDocked 
+    ? "top-1/2 right-full -translate-y-1/2 mr-3" // Left of icon
+    : "top-full left-1/2 -translate-x-1/2 mt-2"; // Below icon
+
+  const arrowClasses = isDocked
+    ? "top-1/2 -translate-y-1/2 left-full border-l-gray-800 dark:border-l-gray-200" // Pointing right
+    : "bottom-full left-1/2 -translate-x-1/2 border-b-gray-800 dark:border-b-gray-200"; // Pointing up
 
   return (
     <motion.button
@@ -27,11 +35,10 @@ const NavItem = ({ item, activeSection, scrollToSection }) => {
         {item.icon}
       </span>
       
-      {/* Tooltip below the navbar item */}
-      <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-2 py-1 bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800 text-xs font-medium rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none lg:block hidden whitespace-nowrap z-[60]">
+      {/* Tooltip with dynamic positioning */}
+      <div className={`absolute px-2 py-1 bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800 text-xs font-medium rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none lg:block hidden whitespace-nowrap z-[60] ${tooltipClasses}`}>
         {item.name}
-        {/* Tooltip arrow pointing up */}
-        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-3 border-r-3 border-b-3 border-transparent border-b-gray-800 dark:border-b-gray-200"></div>
+        <div className={`absolute w-0 h-0 border-4 border-transparent ${arrowClasses}`}></div>
       </div>
       
       {isActive && (
@@ -51,18 +58,32 @@ const NavItem = ({ item, activeSection, scrollToSection }) => {
   );
 };
 
-const DarkModeToggle = ({ darkMode, toggleDarkMode }) => {
+const DarkModeToggle = ({ darkMode, toggleDarkMode, isDocked }) => {
+  const tooltipClasses = isDocked 
+    ? "top-1/2 right-full -translate-y-1/2 mr-3" // Left of icon
+    : "top-full left-1/2 -translate-x-1/2 mt-2"; // Below icon
+
+  const arrowClasses = isDocked
+    ? "top-1/2 -translate-y-1/2 left-full border-l-gray-800 dark:border-l-gray-200" // Pointing right
+    : "bottom-full left-1/2 -translate-x-1/2 border-b-gray-800 dark:border-b-gray-200"; // Pointing up
+    
   return (
     <motion.button
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       onClick={toggleDarkMode}
-      className="relative p-2 rounded-lg transition-colors duration-200"
+      className="relative p-2 rounded-lg transition-colors duration-200 group"
       aria-label="Toggle dark mode"
     >
       <span className="transition-colors duration-300 text-copy dark:text-copy-dark hover:text-accent dark:hover:text-accent">
         {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
       </span>
+
+      {/* Tooltip for DarkModeToggle */}
+      <div className={`absolute px-2 py-1 bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800 text-xs font-medium rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none lg:block hidden whitespace-nowrap z-[60] ${tooltipClasses}`}>
+        {darkMode ? "Light Mode" : "Dark Mode"}
+        <div className={`absolute w-0 h-0 border-4 border-transparent ${arrowClasses}`}></div>
+      </div>
     </motion.button>
   );
 };
@@ -134,7 +155,7 @@ const Navbar = ({ activeSection, darkMode, toggleDarkMode }) => {
                   {item.name}
                 </button>
               ))}
-              <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+              <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} isDocked={isDocked} />
             </nav>
           </motion.div>
         )}
@@ -158,9 +179,9 @@ const Navbar = ({ activeSection, darkMode, toggleDarkMode }) => {
               }}
             >
               {navItems.map((item) => (
-                <NavItem key={item.name} item={item} activeSection={activeSection} scrollToSection={scrollToSection} />
+                <NavItem key={item.name} item={item} activeSection={activeSection} scrollToSection={scrollToSection} isDocked={isDocked} />
               ))}
-              <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+              <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} isDocked={isDocked} />
             </motion.div>
           ) : (
             <motion.div
@@ -178,9 +199,9 @@ const Navbar = ({ activeSection, darkMode, toggleDarkMode }) => {
               }}
             >
               {navItems.map((item) => (
-                <NavItem key={item.name} item={item} activeSection={activeSection} scrollToSection={scrollToSection} />
+                <NavItem key={item.name} item={item} activeSection={activeSection} scrollToSection={scrollToSection} isDocked={isDocked} />
               ))}
-              <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+              <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} isDocked={isDocked} />
             </motion.div>
           )}
         </div>
