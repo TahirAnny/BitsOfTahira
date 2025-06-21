@@ -41,14 +41,14 @@ const Projects = forwardRef((props, ref) => {
             >
               {/* Project Image */}
               <div className={`lg:col-span-7 ${index % 2 === 1 ? 'lg:col-start-6' : ''}`}>
-                <div className="relative group">
+                <a href={project.liveUrl || project.githubUrl} target="_blank" rel="noopener noreferrer" className="relative group block">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-64 lg:h-80 object-cover rounded-lg shadow-lg"
+                    className="w-full h-64 lg:h-96 object-cover rounded-lg shadow-lg filter grayscale group-hover:grayscale-0 transition-all duration-300"
                   />
-                  <div className="absolute inset-0 bg-accent bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 rounded-lg"></div>
-                </div>
+                  <div className="absolute inset-0 bg-[#332D56]/30 group-hover:bg-[#332D56]/0 transition-all duration-300 rounded-lg"></div>
+                </a>
               </div>
 
               {/* Project Content */}
@@ -87,7 +87,9 @@ const Projects = forwardRef((props, ref) => {
                     </div>
                   </div>
                   <div 
-                    className="bg-surface dark:bg-surface-dark p-6 rounded-lg shadow-lg"
+                    className={`relative z-10 flex flex-col h-[250px] bg-surface/70 dark:bg-surface-dark/70 backdrop-blur-lg p-6 rounded-lg shadow-2xl transition-all duration-300 ${
+                      index % 2 === 0 ? 'lg:-ml-40' : 'lg:-mr-40'
+                    }`}
                     style={{
                       backgroundImage: `url(${noise})`,
                       backgroundRepeat: 'repeat',
@@ -95,18 +97,22 @@ const Projects = forwardRef((props, ref) => {
                       backgroundPosition: 'center'
                     }}
                   >
-                    <p className="text-muted dark:text-muted-dark leading-relaxed mb-4">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 text-xs font-medium text-copy dark:text-copy-dark bg-muted/20 dark:bg-muted-dark/20 backdrop-blur-sm rounded-full border border-muted/30 dark:border-muted-dark/30 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-muted/30 dark:hover:bg-muted-dark/30 hover:border-muted/40 dark:hover:border-muted-dark/40"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                    <div className="flex-grow overflow-y-auto pr-2 custom-scrollbar">
+                      <p className="text-copy dark:text-copy-dark leading-relaxed mb-4">
+                        {project.description}
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0 pt-4">
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1 text-xs font-medium text-copy dark:text-copy-dark bg-muted/20 dark:bg-muted-dark/20 backdrop-blur-sm rounded-full border border-muted/30 dark:border-muted-dark/30 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-muted/30 dark:hover:bg-muted-dark/30 hover:border-muted/40 dark:hover:border-muted-dark/40"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
