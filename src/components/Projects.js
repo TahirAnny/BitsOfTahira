@@ -10,19 +10,20 @@ const Projects = forwardRef((props, ref) => {
   const otherProjects = projects.filter(project => !project.featured);
 
   return (
-    <section ref={ref} id="projects" className="section-padding">
-      <div className="container-custom">
+    <section ref={ref} id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-copy dark:text-copy-dark mb-4">
+          <h2 className="text-3xl font-bold text-copy dark:text-copy-dark mb-1 flex items-center justify-end">
+            <span className="text-accent font-mono text-2xl mr-3">02.</span>
             Some Things I've Built
           </h2>
-          <div className="w-24 h-1 bg-accent mx-auto"></div>
+          <div className="w-48 h-px bg-gray-600 mt-2 ml-auto"></div>
         </motion.div>
 
         {/* Featured Projects */}

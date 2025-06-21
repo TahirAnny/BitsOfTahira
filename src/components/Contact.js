@@ -103,8 +103,8 @@ const Contact = forwardRef((props, ref) => {
   }, [submitStatus]);
 
   return (
-    <section ref={ref} id="contact" className="section-padding">
-      <div className="container-custom">
+    <section ref={ref} id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -112,11 +112,13 @@ const Contact = forwardRef((props, ref) => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-copy dark:text-copy-dark mb-4">
-            Get In Touch
+          <h2 className="text-lg text-accent font-mono mb-2">
+            05. What's Next?
           </h2>
-          <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
-          <p className="text-lg text-muted dark:text-muted-dark max-w-2xl mx-auto">
+          <h3 className="text-3xl sm:text-4xl font-bold text-copy dark:text-copy-dark mb-4">
+            Get In Touch
+          </h3>
+          <p className="text-lg text-muted dark:text-muted-dark max-w-xl mx-auto">
             I'm currently looking for new opportunities. Whether you have a question or 
             just want to say hi, I'll try my best to get back to you!
           </p>
@@ -132,9 +134,6 @@ const Contact = forwardRef((props, ref) => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold text-copy dark:text-copy-dark mb-6">
-                Let's talk about everything!
-              </h3>
               <p className="text-muted dark:text-muted-dark leading-relaxed mb-8">
                 Don't like forms? Send me an email directly at{' '}
                 <a 
@@ -181,7 +180,7 @@ const Contact = forwardRef((props, ref) => {
             </div>
 
             {/* Social Links */}
-            <div className="pt-6">
+            <div className="pt-6 lg:hidden">
               <h4 className="font-medium text-copy dark:text-copy-dark mb-4">
                 Follow me on social media
               </h4>
@@ -252,7 +251,7 @@ const Contact = forwardRef((props, ref) => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-muted/30 dark:border-muted-dark/30 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark transition-colors duration-200"
+                    className="text-sm w-full px-4 py-3 border border-muted/30 dark:border-muted-dark/30 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark transition-colors duration-200 placeholder:text-xs"
                     style={{
                       backgroundImage: `url(${noise})`,
                       backgroundRepeat: 'repeat',
@@ -273,7 +272,7 @@ const Contact = forwardRef((props, ref) => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-muted/30 dark:border-muted-dark/30 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark transition-colors duration-200"
+                    className="text-sm w-full px-4 py-3 border border-muted/30 dark:border-muted-dark/30 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark transition-colors duration-200 placeholder:text-xs"
                     style={{
                       backgroundImage: `url(${noise})`,
                       backgroundRepeat: 'repeat',
@@ -296,7 +295,7 @@ const Contact = forwardRef((props, ref) => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-muted/30 dark:border-muted-dark/30 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark transition-colors duration-200"
+                  className="text-sm w-full px-4 py-3 border border-muted/30 dark:border-muted-dark/30 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark transition-colors duration-200 placeholder:text-xs"
                   style={{
                     backgroundImage: `url(${noise})`,
                     backgroundRepeat: 'repeat',
@@ -318,7 +317,7 @@ const Contact = forwardRef((props, ref) => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 border border-muted/30 dark:border-muted-dark/30 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark transition-colors duration-200 resize-none"
+                  className="text-sm w-full px-4 py-3 border border-muted/30 dark:border-muted-dark/30 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent bg-surface dark:bg-surface-dark text-copy dark:text-copy-dark transition-colors duration-200 resize-none placeholder:text-xs"
                   style={{
                     backgroundImage: `url(${noise})`,
                     backgroundRepeat: 'repeat',

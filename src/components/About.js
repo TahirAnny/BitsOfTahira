@@ -14,19 +14,20 @@ const About = forwardRef((props, ref) => {
   };
 
   return (
-    <section ref={ref} id="about" className="section-padding">
-      <div className="container-custom">
+    <section ref={ref} id="about" className="min-h-screen flex items-center py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-copy dark:text-copy-dark mb-4">
+          <h2 className="text-3xl font-bold text-copy dark:text-copy-dark mb-1 flex items-center">
+            <span className="text-accent font-mono text-2xl mr-3">01.</span>
             About Me
           </h2>
-          <div className="w-24 h-1 bg-accent mx-auto"></div>
+          <div className="w-48 h-px bg-gray-600 mt-2"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">

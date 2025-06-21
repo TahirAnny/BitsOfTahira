@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiHome, FiUser, FiBriefcase, FiTool, FiMail, FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
+import { FiHome, FiUser, FiBriefcase, FiTool, FiMail, FiSun, FiMoon, FiMenu, FiX, FiCalendar } from 'react-icons/fi';
 import noise from '../assets/noise.png';
 
 const navItems = [
   { name: 'Home', href: '#home', icon: <FiHome size={20} /> },
   { name: 'About', href: '#about', icon: <FiUser size={20} /> },
   { name: 'Projects', href: '#projects', icon: <FiBriefcase size={20} /> },
+  { name: 'Experience', href: '#experience', icon: <FiCalendar size={20} /> },
   { name: 'Skills', href: '#skills', icon: <FiTool size={20} /> },
   { name: 'Contact', href: '#contact', icon: <FiMail size={20} /> },
 ];
