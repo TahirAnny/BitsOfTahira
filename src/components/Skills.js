@@ -66,61 +66,20 @@ const Skills = forwardRef((props, ref) => {
   };
 
   return (
-    <section ref={ref} id="skills" className="section-padding">
-      <div className="container-custom">
+    <section ref={ref} id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Skills & Technologies
+          <h2 className="text-3xl font-bold text-copy dark:text-copy-dark mb-1 flex items-center justify-end">
+            <span className="text-accent font-mono text-2xl mr-3">04.</span>
+            Behind the Code
           </h2>
-          <div className="w-24 h-1 bg-primary-600 mx-auto mb-8"></div>
-          
-          {/* View Mode Toggle */}
-          <div className="flex justify-center items-center space-x-4 mb-8">
-            {/* <button
-              onClick={() => setViewMode('tree')}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-                viewMode === 'tree'
-                  ? 'bg-primary-600 text-white shadow-lg'
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-              }`}
-            >
-              <FiGrid size={18} />
-              <span>Interactive Tree</span>
-            </button> */}
-            {/* 
-            <button
-              onClick={() => setViewMode('list')}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-                viewMode === 'list'
-                  ? 'bg-primary-600 text-white shadow-lg'
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-              }`}
-            >
-           
-              <FiList size={18} />
-              <span>List View</span>
-            </button>
-             
-            <button
-              onClick={() => setViewMode('cloud')}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-                viewMode === 'cloud'
-                  ? 'bg-primary-600 text-white shadow-lg'
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-              }`}
-            >
-              <FiZap size={18} />
-              <span>Tag Cloud</span>
-            </button>
-
-            */}
-          </div>
+          <div className="w-48 h-px bg-gray-600 mt-2 ml-auto"></div>
         </motion.div>
 
         {/* Interactive Skill Tree View */}

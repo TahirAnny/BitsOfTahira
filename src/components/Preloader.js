@@ -31,13 +31,16 @@ const Preloader = ({ onComplete }) => {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      margin: 0,
+      padding: 0,
     }}>
-      <svg width="100" height="100" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0 0 4px #14b8a6) drop-shadow(0 0 8px #14b8a6)' }}>
+      <svg width="100" height="100" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Animated Hexagon Outline */}
         <motion.path
-          d="M40 10 L68 25 L68 55 L40 70 L12 55 L12 25 Z"
+          d="M40 8 L70 25 L70 57 L40 74 L10 57 L10 25 Z"
           stroke="#14b8a6"
           strokeWidth="4"
+          strokeLinecap="round"
           fill="none"
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
