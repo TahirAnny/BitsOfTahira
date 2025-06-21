@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
+import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -20,6 +21,7 @@ function App() {
   const { ref: homeRef, inView: homeInView } = useInView({ threshold: 0.5 });
   const { ref: aboutRef, inView: aboutInView } = useInView({ threshold: 0.5 });
   const { ref: projectsRef, inView: projectsInView } = useInView({ threshold: 0.5 });
+  const { ref: experienceRef, inView: experienceInView } = useInView({ threshold: 0.5 });
   const { ref: skillsRef, inView: skillsInView } = useInView({ threshold: 0.5 });
   const { ref: contactRef, inView: contactInView } = useInView({ threshold: 0.5 });
 
@@ -27,9 +29,10 @@ function App() {
     if (homeInView) setActiveSection('home');
     else if (aboutInView) setActiveSection('about');
     else if (projectsInView) setActiveSection('projects');
+    else if (experienceInView) setActiveSection('experience');
     else if (skillsInView) setActiveSection('skills');
     else if (contactInView) setActiveSection('contact');
-  }, [homeInView, aboutInView, projectsInView, skillsInView, contactInView]);
+  }, [homeInView, aboutInView, projectsInView, experienceInView, skillsInView, contactInView]);
 
   useEffect(() => {
     // Check for saved dark mode preference, default to dark mode if none saved
@@ -79,6 +82,7 @@ function App() {
           <Hero ref={homeRef} />
           <About ref={aboutRef} />
           <Projects ref={projectsRef} />
+          <Experience ref={experienceRef} />
           <Skills ref={skillsRef} />
           <Contact ref={contactRef} />
         </main>

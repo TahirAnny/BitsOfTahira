@@ -48,6 +48,219 @@ const SkillTree = () => {
         .attr("height", height)
         .style("background", "transparent");
 
+      // Add gradient definitions
+      const defs = svg.append("defs");
+      
+      // Add filter for glow effects
+      defs.append("filter")
+        .attr("id", "glow")
+        .append("feGaussianBlur")
+        .attr("stdDeviation", "3")
+        .attr("result", "coloredBlur");
+      defs.select("#glow")
+        .append("feMerge")
+        .append("feMergeNode")
+        .attr("in", "coloredBlur");
+      defs.select("#glow")
+        .select("feMerge")
+        .append("feMergeNode")
+        .attr("in", "SourceGraphic");
+      
+      // Add filter for shadow effects
+      defs.append("filter")
+        .attr("id", "shadow")
+        .attr("x", "-50%")
+        .attr("y", "-50%")
+        .attr("width", "200%")
+        .attr("height", "200%");
+      defs.select("#shadow")
+        .append("feDropShadow")
+        .attr("dx", "0")
+        .attr("dy", "2")
+        .attr("stdDeviation", "3")
+        .attr("flood-color", "rgba(0,0,0,0.3)")
+        .attr("flood-opacity", "0.3");
+      
+      // .NET Gradient
+      defs.append("radialGradient")
+        .attr("id", "dotnetGradient")
+        .append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#C4AEAD")
+        .attr("stop-opacity", 1);
+      defs.select("#dotnetGradient")
+        .append("stop")
+        .attr("offset", "50%")
+        .attr("stop-color", "#C4AEAD")
+        .attr("stop-opacity", 0.8);
+      defs.select("#dotnetGradient")
+        .append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#C4AEAD")
+        .attr("stop-opacity", 0.4);
+      
+      // Cloud Gradient
+      defs.append("radialGradient")
+        .attr("id", "cloudGradient")
+        .append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#888078")
+        .attr("stop-opacity", 1);
+      defs.select("#cloudGradient")
+        .append("stop")
+        .attr("offset", "50%")
+        .attr("stop-color", "#888078")
+        .attr("stop-opacity", 0.8);
+      defs.select("#cloudGradient")
+        .append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#888078")
+        .attr("stop-opacity", 0.4);
+      
+      // Database Gradient
+      defs.append("radialGradient")
+        .attr("id", "databaseGradient")
+        .append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#343434")
+        .attr("stop-opacity", 1);
+      defs.select("#databaseGradient")
+        .append("stop")
+        .attr("offset", "50%")
+        .attr("stop-color", "#343434")
+        .attr("stop-opacity", 0.8);
+      defs.select("#databaseGradient")
+        .append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#343434")
+        .attr("stop-opacity", 0.4);
+      
+      // API Gradient
+      defs.append("radialGradient")
+        .attr("id", "apiGradient")
+        .append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#3e424b")
+        .attr("stop-opacity", 1);
+      defs.select("#apiGradient")
+        .append("stop")
+        .attr("offset", "50%")
+        .attr("stop-color", "#3e424b")
+        .attr("stop-opacity", 0.8);
+      defs.select("#apiGradient")
+        .append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#3e424b")
+        .attr("stop-opacity", 0.4);
+      
+      // Language Gradient
+      defs.append("radialGradient")
+        .attr("id", "languageGradient")
+        .append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#e5d9f2")
+        .attr("stop-opacity", 1);
+      defs.select("#languageGradient")
+        .append("stop")
+        .attr("offset", "50%")
+        .attr("stop-color", "#e5d9f2")
+        .attr("stop-opacity", 0.8);
+      defs.select("#languageGradient")
+        .append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#e5d9f2")
+        .attr("stop-opacity", 0.4);
+      
+      // Version Control Gradient
+      defs.append("radialGradient")
+        .attr("id", "versionControlGradient")
+        .append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#808080")
+        .attr("stop-opacity", 1);
+      defs.select("#versionControlGradient")
+        .append("stop")
+        .attr("offset", "50%")
+        .attr("stop-color", "#808080")
+        .attr("stop-opacity", 0.8);
+      defs.select("#versionControlGradient")
+        .append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#808080")
+        .attr("stop-opacity", 0.4);
+      
+      // Frontend Gradient
+      defs.append("radialGradient")
+        .attr("id", "frontendGradient")
+        .append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#7c6e7f")
+        .attr("stop-opacity", 1);
+      defs.select("#frontendGradient")
+        .append("stop")
+        .attr("offset", "50%")
+        .attr("stop-color", "#7c6e7f")
+        .attr("stop-opacity", 0.8);
+      defs.select("#frontendGradient")
+        .append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#7c6e7f")
+        .attr("stop-opacity", 0.4);
+      
+      // Project Management Gradient
+      defs.append("radialGradient")
+        .attr("id", "projectManagementGradient")
+        .append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#D7d2cb")
+        .attr("stop-opacity", 1);
+      defs.select("#projectManagementGradient")
+        .append("stop")
+        .attr("offset", "50%")
+        .attr("stop-color", "#D7d2cb")
+        .attr("stop-opacity", 0.8);
+      defs.select("#projectManagementGradient")
+        .append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#D7d2cb")
+        .attr("stop-opacity", 0.4);
+      
+      // Architecture Gradient
+      defs.append("radialGradient")
+        .attr("id", "architectureGradient")
+        .append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#777696")
+        .attr("stop-opacity", 1);
+      defs.select("#architectureGradient")
+        .append("stop")
+        .attr("offset", "50%")
+        .attr("stop-color", "#777696")
+        .attr("stop-opacity", 0.8);
+      defs.select("#architectureGradient")
+        .append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#777696")
+        .attr("stop-opacity", 0.4);
+      
+      // Testing Gradient
+      defs.append("radialGradient")
+        .attr("id", "testingGradient")
+        .append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#738678")
+        .attr("stop-opacity", 1);
+      defs.select("#testingGradient")
+        .append("stop")
+        .attr("offset", "50%")
+        .attr("stop-color", "#738678")
+        .attr("stop-opacity", 0.8);
+      defs.select("#testingGradient")
+        .append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#738678")
+        .attr("stop-opacity", 0.4);
+
       const simulation = d3
         .forceSimulation(nodes)
         .force("link", d3.forceLink(links).distance(100).strength(1).id(d => d.id))
@@ -82,17 +295,17 @@ const SkillTree = () => {
           // Outer ring (hollow circle)
           nodeGroup
             .append("circle")
-            .attr("r", 45)
+            .attr("r", 55)
             .attr("fill", "none")
-            .attr("stroke", "#6366f1")
+            .attr("stroke", "#9897A9")
             .attr("stroke-width", 3)
             .attr("class", "outer-circle");
           
           // Inner filled circle
           nodeGroup
             .append("circle")
-            .attr("r", 32)
-            .attr("fill", "#6366f1")
+            .attr("r", 45)
+            .attr("fill", "#9897A9")
             .attr("stroke", "none")
             .attr("class", "inner-circle");
         } else if (d.children) {
@@ -100,27 +313,65 @@ const SkillTree = () => {
           // Outer ring (hollow circle)
           nodeGroup
             .append("circle")
-            .attr("r", 25)
+            .attr("r", 40)
             .attr("fill", "none")
-            .attr("stroke", "#8b5cf6")
+            .attr("stroke", "#777696")
             .attr("stroke-width", 2)
             .attr("class", "outer-circle");
           
           // Inner filled circle
           nodeGroup
             .append("circle")
-            .attr("r", 18)
-            .attr("fill", "#8b5cf6")
+            .attr("r", 32)
+            .attr("fill", "#777696")
             .attr("stroke", "none")
             .attr("class", "inner-circle");
         } else {
           // Skill nodes - single small circle
+          const isDotNetChild = d.parent && d.parent.data.name.includes('.NET') || d.parent && d.parent.data.name.includes('Back-End');
+          const isCloudChild = d.parent && d.parent.data.name.includes('Cloud') || d.parent && d.parent.data.name.includes('DevOps');
+          const isDatabaseChild = d.parent && d.parent.data.name.includes('Database') || d.parent && d.parent.data.name.includes('Persistence');
+          const isApiChild = d.parent && d.parent.data.name.includes('API') || d.parent && d.parent.data.name.includes('Integration');
+          const isLanguageChild = d.parent && d.parent.data.name.includes('Languages') || d.parent && d.parent.data.name.includes('Markup');
+          const isVersionControlChild = d.parent && d.parent.data.name.includes('Version Control') || d.parent && d.parent.data.name.includes('Collaboration');
+          const isFrontEndChild = d.parent && d.parent.data.name.includes('Front-End') || d.parent && d.parent.data.name.includes('UI');
+          const isProjectManagementChild = d.parent && d.parent.data.name.includes('Project Management') || d.parent && d.parent.data.name.includes('Methodologies');
+          const isArchitectureChild = d.parent && d.parent.data.name.includes('Architecture') || d.parent && d.parent.data.name.includes('Design Patterns');
+          const isTestingChild = d.parent && d.parent.data.name.includes('Testing') || d.parent && d.parent.data.name.includes('Quality Assurance');
+          let nodeColor = "#655967"; // Default color
+          
+          if (isDotNetChild) {
+            nodeColor = "#C4AEAD";
+          } else if (isCloudChild) {
+            nodeColor = "#888078";
+          } else if (isDatabaseChild) {
+            nodeColor = "#343434";
+          } else if (isApiChild) {
+            nodeColor = "#3e424b";
+          } else if (isLanguageChild) {
+            nodeColor = "#e5d9f2";
+          } else if (isVersionControlChild) {
+            nodeColor = "#808080";
+          } else if (isFrontEndChild) {
+            nodeColor = "#7c6e7f";
+          } else if (isProjectManagementChild) {
+            nodeColor = "#D7d2cb";
+          } else if (isArchitectureChild) {
+            nodeColor = "#777696";
+          } else if (isTestingChild) {
+            nodeColor = "#738678";
+          }
+          
           nodeGroup
             .append("circle")
-            .attr("r", 15)
-            .attr("fill", "#64748b")
-            .attr("stroke", "#94a3b8")
+            .attr("r", 20)
+            .attr("fill", nodeColor)
+            .attr("stroke", nodeColor)
             .attr("stroke-width", 1.5)
+            .attr("fill-opacity", 0.7)
+            .attr("stroke-opacity", 0.8)
+            .style("filter", "url(#shadow)")
+            .style("animation", "pulse 3s ease-in-out infinite")
             .attr("class", "skill-circle");
         }
       });
@@ -170,11 +421,23 @@ const SkillTree = () => {
           // Limit to 3 lines maximum
           lines = lines.slice(0, 3);
           
+          // Check if this is .NET ecosystem node
+          const isDotNetNode = d.data.name.includes('.NET') || d.data.name.includes('Back-End');
+          const isCloudNode = d.data.name.includes('Cloud') || d.data.name.includes('DevOps');
+          const isDatabaseNode = d.data.name.includes('Database') || d.data.name.includes('Persistence');
+          const isApiNode = d.data.name.includes('API') || d.data.name.includes('Integration');
+          const isLanguageNode = d.data.name.includes('Languages') || d.data.name.includes('Markup');
+          const isVersionControlNode = d.data.name.includes('Version Control') || d.data.name.includes('Collaboration');
+          const isFrontEndNode = d.data.name.includes('Front-End') || d.data.name.includes('UI');
+          const isProjectManagementNode = d.data.name.includes('Project Management') || d.data.name.includes('Methodologies');
+          const isArchitectureNode = d.data.name.includes('Architecture') || d.data.name.includes('Design Patterns');
+          const isTestingNode = d.data.name.includes('Testing') || d.data.name.includes('Quality Assurance');
+          
           lines.forEach((line, i) => {
             nodeGroup
               .append("text")
               .text(line)
-              .attr("font-size", "7px")
+              .attr("font-size", "9px")
               .attr("fill", "white")
               .attr("text-anchor", "middle")
               .attr("dominant-baseline", "middle")
@@ -183,6 +446,106 @@ const SkillTree = () => {
               .attr("class", "node-text")
               .style("pointer-events", "none");
           });
+          
+          // Update circle colors for .NET ecosystem
+          if (isDotNetNode) {
+            nodeGroup.select(".outer-circle")
+              .attr("stroke", "#C4AEAD")
+              .attr("stroke-opacity", 0.8)
+              .style("filter", "url(#shadow)");
+            nodeGroup.select(".inner-circle")
+              .attr("fill", "url(#dotnetGradient)");
+          }
+          
+          // Update circle colors for Cloud, DevOps & Infrastructure
+          if (isCloudNode) {
+            nodeGroup.select(".outer-circle")
+              .attr("stroke", "#888078")
+              .attr("stroke-opacity", 0.8)
+              .style("filter", "url(#shadow)");
+            nodeGroup.select(".inner-circle")
+              .attr("fill", "url(#cloudGradient)");
+          }
+          
+          // Update circle colors for Databases & Persistence
+          if (isDatabaseNode) {
+            nodeGroup.select(".outer-circle")
+              .attr("stroke", "#343434")
+              .attr("stroke-opacity", 0.8)
+              .style("filter", "url(#shadow)");
+            nodeGroup.select(".inner-circle")
+              .attr("fill", "url(#databaseGradient)");
+          }
+          
+          // Update circle colors for API Design & Integration
+          if (isApiNode) {
+            nodeGroup.select(".outer-circle")
+              .attr("stroke", "#3e424b")
+              .attr("stroke-opacity", 0.8)
+              .style("filter", "url(#shadow)");
+            nodeGroup.select(".inner-circle")
+              .attr("fill", "url(#apiGradient)");
+          }
+          
+          // Update circle colors for Languages & Markup
+          if (isLanguageNode) {
+            nodeGroup.select(".outer-circle")
+              .attr("stroke", "#e5d9f2")
+              .attr("stroke-opacity", 0.8)
+              .style("filter", "url(#shadow)");
+            nodeGroup.select(".inner-circle")
+              .attr("fill", "url(#languageGradient)");
+          }
+          
+          // Update circle colors for Version Control (Git color)
+          if (isVersionControlNode) {
+            nodeGroup.select(".outer-circle")
+              .attr("stroke", "#808080")
+              .attr("stroke-opacity", 0.8)
+              .style("filter", "url(#shadow)");
+            nodeGroup.select(".inner-circle")
+              .attr("fill", "url(#versionControlGradient)");
+          }
+          
+          // Update circle colors for Front-End (React color)
+          if (isFrontEndNode) {
+            nodeGroup.select(".outer-circle")
+              .attr("stroke", "#7c6e7f")
+              .attr("stroke-opacity", 0.8)
+              .style("filter", "url(#shadow)");
+            nodeGroup.select(".inner-circle")
+              .attr("fill", "url(#frontendGradient)");
+          }
+          
+          // Update circle colors for Project Management
+          if (isProjectManagementNode) {
+            nodeGroup.select(".outer-circle")
+              .attr("stroke", "#D7d2cb")
+              .attr("stroke-opacity", 0.8)
+              .style("filter", "url(#shadow)");
+            nodeGroup.select(".inner-circle")
+              .attr("fill", "url(#projectManagementGradient)");
+          }
+          
+          // Update circle colors for Architecture
+          if (isArchitectureNode) {
+            nodeGroup.select(".outer-circle")
+              .attr("stroke", "#777696")
+              .attr("stroke-opacity", 0.8)
+              .style("filter", "url(#shadow)");
+            nodeGroup.select(".inner-circle")
+              .attr("fill", "url(#architectureGradient)");
+          }
+          
+          // Update circle colors for Testing
+          if (isTestingNode) {
+            nodeGroup.select(".outer-circle")
+              .attr("stroke", "#738678")
+              .attr("stroke-opacity", 0.8)
+              .style("filter", "url(#shadow)");
+            nodeGroup.select(".inner-circle")
+              .attr("fill", "url(#testingGradient)");
+          }
         } else {
           // Skill nodes - single line text with truncation
           nodeGroup
@@ -298,13 +661,13 @@ const SkillTree = () => {
           nodeGroup.select(".outer-circle")
             .transition()
             .duration(200)
-            .attr("r", 50)
+            .attr("r", 55)
             .attr("stroke-width", 4);
           
           nodeGroup.select(".inner-circle")
             .transition()
             .duration(200)
-            .attr("r", 35);
+            .attr("r", 45);
           
           nodeGroup.select(".node-text")
             .transition()
@@ -326,7 +689,7 @@ const SkillTree = () => {
           nodeGroup.selectAll(".node-text")
             .transition()
             .duration(200)
-            .attr("font-size", "8px");
+            .attr("font-size", "9px");
         } else {
           // Skill node hover effect
           nodeGroup.select(".skill-circle")
@@ -352,13 +715,13 @@ const SkillTree = () => {
           nodeGroup.select(".outer-circle")
             .transition()
             .duration(200)
-            .attr("r", 45)
+            .attr("r", 55)
             .attr("stroke-width", 3);
           
           nodeGroup.select(".inner-circle")
             .transition()
             .duration(200)
-            .attr("r", 32);
+            .attr("r", 45);
           
           nodeGroup.select(".node-text")
             .transition()
@@ -369,24 +732,24 @@ const SkillTree = () => {
           nodeGroup.select(".outer-circle")
             .transition()
             .duration(200)
-            .attr("r", 25)
+            .attr("r", 40)
             .attr("stroke-width", 2);
           
           nodeGroup.select(".inner-circle")
             .transition()
             .duration(200)
-            .attr("r", 18);
+            .attr("r", 32);
           
           nodeGroup.selectAll(".node-text")
             .transition()
             .duration(200)
-            .attr("font-size", "7px");
+            .attr("font-size", "9px");
         } else {
           // Skill node reset
           nodeGroup.select(".skill-circle")
             .transition()
             .duration(200)
-            .attr("r", 15)
+            .attr("r", 20)
             .attr("stroke-width", 1.5);
           
           nodeGroup.select(".node-text")

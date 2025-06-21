@@ -21,11 +21,6 @@ export const personalInfo = {
         link: "mailto:tahirabishwas@gmail.com"
       },
       {
-        title: "Phone",
-        value: "+1 437-559-9741",
-        link: "tel:+14375599741"
-      },
-      {
         title: "Location",
         value: "Ontario, Canada",
         link: "#"
