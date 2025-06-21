@@ -19,12 +19,20 @@ const NavItem = ({ item, activeSection, scrollToSection }) => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       onClick={() => scrollToSection(item.href)}
-      className="relative p-2 rounded-lg transition-colors duration-200"
+      className="relative p-2 rounded-lg transition-colors duration-200 group"
       aria-label={item.name}
     >
       <span className={`transition-colors duration-300 ${isActive ? 'text-white' : 'text-copy dark:text-copy-dark hover:text-accent dark:hover:text-accent'}`}>
         {item.icon}
       </span>
+      
+      {/* Tooltip below the navbar item */}
+      <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-2 py-1 bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800 text-xs font-medium rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none lg:block hidden whitespace-nowrap z-[60]">
+        {item.name}
+        {/* Tooltip arrow pointing up */}
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-3 border-r-3 border-b-3 border-transparent border-b-gray-800 dark:border-b-gray-200"></div>
+      </div>
+      
       {isActive && (
         <motion.div
           layoutId="active-nav-item"
