@@ -71,17 +71,20 @@ const logWarning = (message, data = {}) => {
 };
 
 // Middleware
-app.use(cors());
-app.use(express.json());
-
-// Update CORS configuration for production
 app.use(cors({
   origin: [
-    'https://tahiraanny.vercel.app/', // Your Vercel domain
+    'https://tahiraanny.vercel.app', // Your Vercel domain (removed trailing slash)
     'http://localhost:3000' // For local development
   ],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Handle preflight requests
+app.options('*', cors());
+
+app.use(express.json());
 
 // Memory monitoring middleware
 app.use((req, res, next) => {
@@ -516,7 +519,7 @@ function generateMockResponse(message) {
     ],
     'experience': [
       "I have 5 years of experience in fintech development, working on critical banking systems and anti-money laundering (AML) solutions. I've developed secure financial applications, implemented compliance systems, and worked with sensitive financial data.",
-      "My experience spans 5 years in the fintech sector, working with banking systems and financial compliance. I've built applications that handle millions of transactions, implemented AML detection systems, and worked with various financial APIs."
+      "My experience spans 5 years in the fintech sector, working with banking systems and financial compliance. I've built applications that handle millions of transactions, implement AML detection systems, and worked with various financial APIs."
     ],
     'project': [
       "I've developed several critical fintech applications including anti-money laundering (AML) systems, banking platforms, and financial compliance tools. Each project demonstrates my ability to handle sensitive financial data, implement security measures, and ensure regulatory compliance.",
@@ -603,9 +606,22 @@ function generateMockResponse(message) {
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
+  const used = process.memoryUsage();
+  const uptime = Date.now() - analytics.startTime;
+  const hours = Math.floor(uptime / (1000 * 60 * 60));
+  const minutes = Math.floor((uptime % (1000 * 60 * 60)) / (1000 * 60));
+  
   res.status(200).json({ 
     success: true, 
-    message: 'Server is running' 
+    message: 'Server is running',
+    status: 'healthy',
+    memory: {
+      rss: `${(used.rss/1024/1024).toFixed(2)}MB`,
+      heapUsed: `${(used.heapUsed/1024/1024).toFixed(2)}MB`,
+      heapTotal: `${(used.heapTotal/1024/1024).toFixed(2)}MB`
+    },
+    uptime: `${hours}h ${minutes}m`,
+    timestamp: new Date().toISOString()
   });
 });
 
