@@ -47,7 +47,6 @@ A modern portfolio website showcasing full-stack development skills with React, 
 - **Real ChatGPT API**: When API key is available, uses actual OpenAI responses
 - **Advanced Mock Responses**: Sophisticated fallback that looks like real AI
 - **Context-Aware Conversations**: Maintains conversation history and context
-- **Recruiter-Focused Responses**: Professional, technical answers for hiring managers
 - **Error Recovery**: Handles rate limits, quota exceeded, network issues
 - **Usage Analytics**: Track requests, costs, performance metrics
 - **Smart Categorization**: Automatically categorizes questions and provides relevant answers
@@ -328,13 +327,6 @@ Try asking these questions:
 - "How can I contact you?"
 - "What projects have you worked on?"
 
-### **What Recruiters See**
-- **Professional Responses**: Detailed, technical answers
-- **Real AI Integration**: Actual ChatGPT API implementation
-- **Error Handling**: Graceful fallbacks when API fails
-- **Cost Management**: Smart usage of API tokens
-- **Production Quality**: Enterprise-level implementation
-
 ## 📬 Contact Form Email Delivery
 
 By default, this portfolio uses **EmailJS** to send emails directly from the frontend. This means you do not need to provide email credentials in your backend for the contact form to work. Simply configure your EmailJS service, template, and user ID in the frontend code as described below.
@@ -567,7 +559,3 @@ If you need help:
 2. Review the logs in `server/logs/`
 3. Check the technical documentation
 4. Open an issue on GitHub
-
----
-
-**This portfolio showcases production-ready development skills that would be expected in enterprise applications, making it impressive to technical recruiters and hiring managers!**
