@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { IoStatsChart, IoServer, IoTime, IoCheckmarkCircle, IoWarning } from 'react-icons/io5';
+import API_BASE_URL from '../config/apiConfig';
 
 const ChatbotDashboard = ({ isVisible, onClose }) => {
   const [analytics, setAnalytics] = useState(null);
@@ -14,8 +15,8 @@ const ChatbotDashboard = ({ isVisible, onClose }) => {
 
   const fetchAnalytics = async () => {
     try {
-      console.log('🔍 Fetching analytics from:', 'http://localhost:5000/api/analytics');
-      const response = await fetch('http://localhost:5000/api/analytics');
+      console.log('🔍 Fetching analytics from:', `${API_BASE_URL}/api/analytics`);
+      const response = await fetch(`${API_BASE_URL}/api/analytics`);
       console.log('📡 Response status:', response.status);
       
       if (!response.ok) {

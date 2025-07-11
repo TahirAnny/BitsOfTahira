@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoChatbubbleEllipses, IoClose, IoPaperPlane, IoSparkles, IoCode, IoStatsChart } from 'react-icons/io5';
 import ChatbotDashboard from './ChatbotDashboard';
+import API_BASE_URL from '../config/apiConfig';
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +46,7 @@ const Chatbot = () => {
     setIsTyping(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/chat', {
+      const response = await fetch(`${API_BASE_URL}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
