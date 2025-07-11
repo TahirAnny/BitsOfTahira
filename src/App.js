@@ -13,6 +13,7 @@ import SocialIcons from './components/SocialIcons';
 import EmailLink from './components/EmailLink';
 import AnimatedBackground from './components/AnimatedBackground';
 import LoaderWrapper from './components/LoaderWrapper';
+import Chatbot from './components/Chatbot';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -89,6 +90,7 @@ function App() {
         <Footer />
         <SocialIcons />
         <EmailLink />
+        <Chatbot />
       </motion.div>
     </LoaderWrapper>
   );
