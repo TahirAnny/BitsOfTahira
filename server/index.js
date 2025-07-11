@@ -6,6 +6,11 @@ const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
 
+// Add at the very top after imports
+console.log('Starting server...');
+console.log('Environment:', process.env.NODE_ENV);
+console.log('Port:', process.env.PORT);
+
 const app = express();
 const PORT = process.env.SERVER_PORT || 5000;
 
@@ -625,11 +630,9 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-  console.log(`Health check: http://localhost:${PORT}/api/health`);
-  
-  // Log initial memory usage
+// Add to your listen callback
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`✅ Server is running on port ${PORT}`);
+  console.log(`✅ Health check: http://localhost:${PORT}/api/health`);
   logMemoryUsage();
 }); 
