@@ -91,9 +91,15 @@ app.options('*', cors());
 
 app.use(express.json());
 
-// Memory monitoring middleware
+// Request logging middleware
 app.use((req, res, next) => {
   logMemoryUsage();
+  logInfo(`Request: ${req.method} ${req.path}`, {
+    method: req.method,
+    path: req.path,
+    userAgent: req.get('User-Agent'),
+    ip: req.ip
+  });
   next();
 });
 
@@ -608,6 +614,16 @@ function generateMockResponse(message) {
 
   return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
 }
+
+// Test endpoint
+app.get('/api/test', (req, res) => {
+  res.status(200).json({ 
+    success: true, 
+    message: 'Backend is working!',
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
