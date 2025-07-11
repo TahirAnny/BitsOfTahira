@@ -50,7 +50,7 @@ export const personalInfo = {
       clients: "15+",
       technologies: "5+"
     },
-    resume: "https://drive.google.com/file/d/1Dc1mfhVUj_ICDF_frTu68l23tjH5WpcF/view?usp=sharing"
+    resume: "https://drive.google.com/file/d/1HLI-Wd0eQfIepZWhxZhUQxS-eg5B4pQV/view?usp=sharing"
   },
   
   // Skills Information
