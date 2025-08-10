@@ -1,6 +1,6 @@
 # My Portfolio - Complete Guide
 
-A modern portfolio website showcasing full-stack development skills with React, Node.js, and ChatGPT API integration.
+A modern portfolio website using React, Node.js, and ChatGPT API integration.
 
 ## 📋 Table of Contents
 
