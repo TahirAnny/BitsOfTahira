@@ -1,8 +1,36 @@
-import React, { useState, forwardRef } from 'react';
+import React, { useState, forwardRef, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiPlay } from 'react-icons/fi';
 
 const experienceData = [
+  {
+    id: 'mojitofilms-fullstack',
+    company: 'Mojitofilms - AI-powered movie buddy (German Based Company)',
+    shortName: 'Mojitofilms',
+    position: 'Full-Stack Software Engineer',
+    location: 'Remote',
+    duration: 'July 2025 - Present',
+    description: [
+      'Engineered responsive mobile and web interfaces with Ionic React and Capacitor, delivering seamless, cross-platform user experiences that boosted engagement.',
+      'Implemented scalable backend features using Node.js and Next.js API routes, enhancing application performance and reliability.',
+      'Designed and optimized data models leveraging PostgreSQL (RDS) and MongoDB, ensuring efficient, secure, and scalable data storage solutions.',
+      'Established robust authentication protocols, enabled multi-language support through internationalization, and integrated key third-party APIs to extend functionality and security.',
+      'Authored and maintained comprehensive technical documentation covering components, Redux state management, custom hooks, utilities, and deployment workflows, improving team collaboration and onboarding efficiency.'
+    ]
+  },
+  {
+    id: 'freelance-fullstack',
+    company: 'Freelance (Remote)',
+    shortName: 'Freelance',
+    position: 'Full-Stack Software Engineer',
+    location: 'Remote',
+    duration: 'December 2024 - June 2025',
+    description: [
+      'Integrated Stripe payment gateway into a .NET Core application, enabling secure and scalable payment processing aligned with SaaS platform requirements.',
+      'Optimized CI/CD pipelines using modern tools (e.g., GitHub Actions, Azure DevOps), reducing deployment time by 20% and improving system uptime to 99.9%, supporting rapid iteration and agile delivery.',
+      'Architected and deployed cloud-native infrastructure on AWS (EC2, RDS, S3), improving application fault tolerance, scalability, and performance in a microservices environment.'
+    ]
+  },
   {
     id: 'datasoft-fullstack',
     company: 'DataSoft Systems',
@@ -40,6 +68,17 @@ const experienceData = [
 
 const Experience = forwardRef((props, ref) => {
   const [activeTab, setActiveTab] = useState(0);
+  const [maxHeight, setMaxHeight] = useState(0);
+  const hiddenRefs = useRef([]);
+
+  // Measure tallest description on mount
+  useEffect(() => {
+    if (hiddenRefs.current.length) {
+      const heights = hiddenRefs.current.map(el => el?.offsetHeight || 0);
+      const tallest = Math.max(...heights);
+      setMaxHeight(tallest);
+    }
+  }, []);
 
   const handleKeyDown = (event, index) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -51,6 +90,7 @@ const Experience = forwardRef((props, ref) => {
   return (
     <section ref={ref} id="experience" className="min-h-screen flex items-center py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto w-full">
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -66,8 +106,8 @@ const Experience = forwardRef((props, ref) => {
           <div className="w-48 h-px bg-gray-600 mt-2"></div>
         </motion.div>
 
-        {/* Experience Content */}
-        <div className="flex flex-col md:flex-row gap-8 md:gap-10 min-h-[400px]">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-10">
+
           {/* Company Tabs */}
           <div className="relative flex md:flex-col overflow-x-auto md:overflow-visible">
             <div className="flex md:flex-col border-b-2 md:border-b-0 md:border-l-2 border-gray-700">
@@ -89,25 +129,22 @@ const Experience = forwardRef((props, ref) => {
                   {job.shortName}
                 </button>
               ))}
+
               {/* Active Tab Highlighter */}
               <motion.div
                 className="absolute left-0 bottom-0 md:bottom-auto md:top-0 h-0.5 md:h-full md:w-0.5 bg-accent"
                 initial={false}
-                animate={{ 
-                  y: activeTab * 52, // 52px is py-3 (24px) + line-height (approx 28px)
+                animate={{
+                  y: activeTab * 52,
                   height: 52,
                 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                style={{
-                  top: 0,
-                  transform: `translateY(${activeTab * 52}px)`
-                }}
               />
             </div>
           </div>
 
           {/* Job Details Panel */}
-          <div className="flex-grow">
+          <div className="flex-grow" style={{ minHeight: maxHeight }}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -151,6 +188,33 @@ const Experience = forwardRef((props, ref) => {
                 </div>
               </motion.div>
             </AnimatePresence>
+
+            {/* Hidden elements for height calculation */}
+            <div className="absolute opacity-0 pointer-events-none -z-50">
+              {experienceData.map((job, idx) => (
+                <div
+                  key={job.id}
+                  ref={(el) => (hiddenRefs.current[idx] = el)}
+                  className="w-full"
+                >
+                  <div className="space-y-4">
+                    <div className="min-h-[90px]">
+                      <h3 className="text-xl font-semibold">{job.position}</h3>
+                      <p className="font-mono text-sm mt-1">{job.duration}</p>
+                    </div>
+                    <ul className="space-y-2.5">
+                      {job.description.map((item, index) => (
+                        <li key={index} className="flex gap-3">
+                          <span className="w-3 h-3" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
       </div>
@@ -160,4 +224,4 @@ const Experience = forwardRef((props, ref) => {
 
 Experience.displayName = 'Experience';
 
-export default Experience; 
+export default Experience;
