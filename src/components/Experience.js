@@ -9,7 +9,7 @@ const experienceData = [
     shortName: 'Mojitofilms',
     position: 'Full-Stack Software Engineer',
     location: 'Remote',
-    duration: 'July 2025 - Present',
+    duration: 'July 2025 - March 2026',
     description: [
       'Engineered responsive mobile and web interfaces with Ionic React and Capacitor, delivering seamless, cross-platform user experiences that boosted engagement.',
       'Implemented scalable backend features using Node.js and Next.js API routes, enhancing application performance and reliability.',
